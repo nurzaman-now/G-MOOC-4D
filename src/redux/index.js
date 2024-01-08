@@ -3,7 +3,9 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import adminSlice from './admin';
 import checkPermissionSlice from './check-permission';
+import speechRecognitionSlice from './speech-recognition';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
@@ -28,12 +30,14 @@ const storage = typeof window !== 'undefined' ? createWebStorage('session') : cr
 
 //config for persist
 const persistConfig = {
-    key: 'g-mooc-4d',
+    key: 'voiceSee',
     storage,
 };
 
 const rootReducer = combineReducers({
+    admin: adminSlice,
     checkPermission: checkPermissionSlice,
+    speechRecognition: speechRecognitionSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

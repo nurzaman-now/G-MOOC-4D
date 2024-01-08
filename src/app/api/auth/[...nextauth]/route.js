@@ -1,12 +1,12 @@
 import NextAuth from 'next-auth';
-import { authLogin, authLoginWithFace } from '@/axios/auth';
-import { ApiResponseError } from '@/utils/error-handling';
+// import { loginApi } from '@/axios/auth';
+// import axios from 'axios';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { apiInstance } from '../../../../axios/instance';
 
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
-            id: 'common-login',
             name: 'Credentials',
             credentials: {
                 email: {
@@ -19,47 +19,33 @@ const handler = NextAuth({
 
             async authorize(credentials) {
                 try {
-                    const response = await authLogin({
-                        email: credentials.email,
-                        password: credentials.password,
-                    });
+                    // const response = await loginApi({
+                    //     email: credentials.email,
+                    //     password: credentials.password,
+                    // });
+                    // console.log(response.data);
 
-                    console.log('Response login: ', response.data);
-                    return response.data;
+                    // return response.data;
+
+                    const res = await apiInstance.post(
+                        '/login',
+                        {
+                            email: credentials.email,
+                            password: credentials.password,
+                        },
+                        {
+                            headers: {
+                                accept: '*/*',
+                                withCredentials: true,
+                                'Content-Type': 'application/json',
+                            },
+                        },
+                    );
+
+                    // console.log(res.data.data);
+                    return res.data.data;
                 } catch (error) {
-                    if (error instanceof ApiResponseError) {
-                        console.log(`ERR USER AUTH: `, error.message);
-                        console.log(error.data);
-                        throw new Error(error.message);
-                    }
-                    throw new Error(error.response.data.message);
-                }
-            },
-        }),
-        CredentialsProvider({
-            id: 'face-login',
-            name: 'Credentials',
-            credentials: {
-                image: {
-                    label: 'image',
-                    type: 'text',
-                },
-            },
-
-            async authorize(credentials) {
-                try {
-                    const response = await authLoginWithFace({
-                        image: credentials.image,
-                    });
-
-                    console.log('response data muka: ', response.data);
-                    return response.data;
-                } catch (error) {
-                    if (error instanceof ApiResponseError) {
-                        console.log(`ERR USER FACE AUTH: `, error.message);
-                        console.log(error.data);
-                        throw new Error(error.message);
-                    }
+                    console.log('ERROR USER AUTH', error.response.data.message);
                     throw new Error(error.response.data.message);
                 }
             },
@@ -73,7 +59,8 @@ const handler = NextAuth({
             return { ...token, ...user };
         },
 
-        async session({ session, token }) {
+        // eslint-disable-next-line no-unused-vars
+        async session({ session, token, user }) {
             session.user = token;
             return session;
         },

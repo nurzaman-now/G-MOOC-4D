@@ -7,9 +7,6 @@ module.exports = {
     ],
     theme: {
         extend: {
-            screens: {
-                sm: '480px',
-            },
             fontFamily: {
                 monsterrat: ['var(--font-monsterrat)'],
             },

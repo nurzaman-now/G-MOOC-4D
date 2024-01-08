@@ -1,8 +1,8 @@
 import './globals.css';
 import { Montserrat } from 'next/font/google';
 import PropTypes from 'prop-types';
-import NextAuthProvider from '@/components/NextAuthProvider';
-import ReduxProvider from '@/components/ReduxProvider';
+import NextAuthProvider from '@/components/organism/NextAuthProvider';
+import ReduxProvider from '@/components/organism/ReduxProvider';
 
 const monsterrat = Montserrat({
     subsets: ['latin'],
@@ -12,16 +12,14 @@ const monsterrat = Montserrat({
 });
 
 export const metadata = {
-    title: 'G-MOOC 4D',
+    title: 'Admin Area | GMOOC 4D',
     description: 'Apps for who have spirit of learning!',
-    manifest: '/manifest.json',
 };
-
 
 export default function RootLayout({ children }) {
     return (
         <html lang='en' className={`${monsterrat.variable}`}>
-            <body suppressHydrationWarning className='antialiased'>
+            <body suppressHydrationWarning>
                 <NextAuthProvider>
                     <ReduxProvider>{children}</ReduxProvider>
                 </NextAuthProvider>

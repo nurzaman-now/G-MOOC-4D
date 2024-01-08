@@ -1,37 +1,27 @@
 import axios, { AxiosError } from 'axios';
-import { apiInstance, apiMlInstance, sanctumApiInstance } from './instance';
-import { ApiResponseError } from '@/utils/error-handling';
-import * as https from 'https';
-const httpsAgent = new https.Agent({
-    rejectUnauthorized: false,
-});
+import { apiInstance, sanctumApiInstance } from './instance';
 
 /* 
 @ROUTE : /register 
 */
-export const authRegister = async ({ name, email, password, konfirmasi_password, images, host, faceMode = true }) => {
+export const registerApi = async ({ name, email, password, konfirmasi_password, host }) => {
     try {
-        if (!name && !email && !password && !konfirmasi_password && !host) throw new Error('Please insert all input form!');
+        if ((!name && !email && !password && !konfirmasi_password) || !host) throw new Error('Please insert all input form!');
         if (!password) throw new Error('Password must be submitted!');
         if (!konfirmasi_password) throw new Error('Konfirmasi Password must be submitted!');
         if (!password !== !konfirmasi_password) throw new Error('Password & Konfirmasi Password must same!');
         if (!name) throw new Error('Name must be submitted!');
         if (!email) throw new Error('Email must be submitted!');
         if (!host) throw new Error('Host must be submitted!');
-        if (!images) throw new Error('images must be submitted!');
 
-        if (!faceMode) {
-            await sanctumApiInstance.get();
-        }
-
-        const response = await apiMlInstance.post(
+        await sanctumApiInstance.get();
+        const response = await apiInstance.post(
             '/register',
             {
                 name,
                 email,
                 password,
                 konfirmasi_password,
-                images,
                 host,
             },
             {
@@ -43,13 +33,9 @@ export const authRegister = async ({ name, email, password, konfirmasi_password,
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            // console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
         throw new Error(error.message); //throw custom error
     }
@@ -58,7 +44,7 @@ export const authRegister = async ({ name, email, password, konfirmasi_password,
 /* 
 @ROUTE : /login 
 */
-export const authLogin = async ({ email, password }) => {
+export const loginApi = async ({ email, password }) => {
     try {
         if (!email && !password) throw new Error('Email & Password must be submitted!');
         if (!email) throw new Error('Email must be submitted!');
@@ -79,56 +65,18 @@ export const authLogin = async ({ email, password }) => {
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            // console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
-        throw new Error(error.message); //throw custom error
-    }
-};
-
-/* 
-@ROUTE : /login-face 
-*/
-
-export const authLoginWithFace = async ({ image }) => {
-    try {
-        if (!image) throw Error('Image must submitted!');
-
-        const response = await apiMlInstance.post(
-            '/login-face',
-            {
-                image,
-            },
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                httpsAgent,
-            },
-        );
-        return response.data;
-    } catch (error) {
-        if (error instanceof AxiosError) {
-            const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
-        }
+        throw new Error(error.message);
     }
 };
 
 /* 
 @ROUTE : /logout 
 */
-export const authLogout = async ({ token }) => {
+export const logoutApi = async ({ token }) => {
     try {
         if (!token) throw new Error('Token must be submitted!');
         const response = await apiInstance.get('/logout', {
@@ -140,22 +88,18 @@ export const authLogout = async ({ token }) => {
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            // console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
-        throw new Error(error.message); //throw custom error
+        throw new Error(error.message);
     }
 };
 
 /* 
 @ROUTE : /verify 
 */
-export const authVerify = async ({ url }) => {
+export const verifyApi = async ({ url }) => {
     try {
         if (!url) throw new Error('url must be submitted!');
         const response = await axios.get(url, {
@@ -166,22 +110,18 @@ export const authVerify = async ({ url }) => {
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            // console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
-        throw new Error(error.message); //throw custom error
+        throw new Error(error.message);
     }
 };
 
 /* 
 @ROUTE : /email/verification-notification
 */
-export const authResendVerify = async ({ token, host }) => {
+export const resendVerifyApi = async ({ token, host }) => {
     try {
         if (!token) throw new Error('Token must be submitted!');
         if (!host) throw new Error('Host must be submitted!');
@@ -201,22 +141,18 @@ export const authResendVerify = async ({ token, host }) => {
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            // console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
-        throw new Error(error.message); //throw custom error
+        throw new Error(error.message);
     }
 };
 
 /* 
 @ROUTE : '/forgot-password'
 */
-export const authForgotPassword = async ({ email, host }) => {
+export const forgotPasswordApi = async ({ email, host }) => {
     try {
         if (!email) throw new Error('Email must be submitted!');
         if (!host) throw new Error('Host must be submitted!');
@@ -236,22 +172,18 @@ export const authForgotPassword = async ({ email, host }) => {
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            // console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
-        throw new Error(error.message); //throw custom error
+        throw new Error(error.message);
     }
 };
 
 /* 
 @ROUTE : '/reset-password'
 */
-export const authResetPassword = async ({ email, password, password_confirmation, token }) => {
+export const resetPasswordApi = async ({ email, password, password_confirmation, token }) => {
     try {
         if (!password) throw new Error('Password must be submitted!');
         if (!password_confirmation) throw new Error('Password Confirmation must be submitted!');
@@ -277,41 +209,10 @@ export const authResetPassword = async ({ email, password, password_confirmation
         return response.data;
     } catch (error) {
         if (error instanceof AxiosError) {
+            console.log(error?.response); //Uncomment for debugging
             const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
+            throw new Error(errorMsg);
         }
-        throw new Error(error.message); //throw custom error
-    }
-};
-
-/* 
-@ROUTE : /logout 
-*/
-export const authCheckUser = async ({ token }) => {
-    try {
-        if (!token) throw new Error('Token must be submitted!');
-        const response = await apiInstance.get('/user', {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        return response.data;
-    } catch (error) {
-        if (error instanceof AxiosError) {
-            const errorMsg = error?.response?.data?.metadata?.message;
-            const errorData = error?.response;
-
-            throw new ApiResponseError({
-                data: errorData,
-                message: errorMsg,
-            });
-        }
-        throw new Error(error.message); //throw custom error
+        throw new Error(error.message);
     }
 };
