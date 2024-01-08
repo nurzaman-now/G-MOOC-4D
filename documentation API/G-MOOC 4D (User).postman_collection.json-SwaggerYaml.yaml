@@ -1,0 +1,4556 @@
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: G-MOOC 4D (User)
+  contact: {}
+host: nurz.me
+basePath: /
+securityDefinitions: {}
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/register:
+    post:
+      summary: register
+      tags:
+        - Auth
+      operationId: register
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/registerrequest"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/register"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 03:05:11 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+      security: []
+  /api/login:
+    post:
+      summary: login
+      tags:
+        - Auth
+      operationId: login
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/loginrequest"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/login"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 03:10:52 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+      security: []
+  /api/logout:
+    get:
+      summary: logout
+      tags:
+        - Auth
+      operationId: logout
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/logout"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Fri, 11 Aug 2023 14:17:30 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.12-1ubuntu4.2
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/email/verify/2/fd2c5b5b5367b97262f4dadd26d29fccd88449ae:
+    get:
+      summary: verify email
+      tags:
+        - Auth
+      operationId: verifyemail
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: expires
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ""
+        - name: signature
+          in: query
+          required: true
+          type: string
+          description: ""
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/verifyemail"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 07:07:12 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "58"
+            Vary:
+              type: string
+              default: Origin
+      security: []
+  /api/email/verification-notification:
+    post:
+      summary: resend email verification
+      tags:
+        - Auth
+      operationId: resendemailverification
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/resendemailverificationrequest"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/resendemailverification"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 07:17:26 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "6"
+            X-RateLimit-Remaining:
+              type: string
+              default: "4"
+            Vary:
+              type: string
+              default: Origin
+  /api/forgot-password:
+    post:
+      summary: lupa password
+      tags:
+        - Auth
+      operationId: lupapassword
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/lupapasswordrequest"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/lupapassword"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 07:18:40 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+      security: []
+  /api/reset-password:
+    post:
+      summary: password baru
+      tags:
+        - Auth
+      operationId: passwordbaru
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/passwordbarurequest"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/passwordbaru"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 07:25:38 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "57"
+            Vary:
+              type: string
+              default: Origin
+      security: []
+  /api/user:
+    get:
+      summary: get user
+      tags:
+        - Users
+      operationId: getuser
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Accept
+          in: header
+          required: true
+          type: string
+          description: ""
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getuser"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 04:07:14 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/update:
+    put:
+      summary: update user
+      tags:
+        - Users
+      operationId: updateuser
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/updateuserrequest"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/updateuser"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 04:07:41 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "58"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/updateImage:
+    post:
+      summary: Update Image
+      tags:
+        - Users
+      operationId: UpdateImage
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: image
+          in: formData
+          required: true
+          type: file
+          format: file
+          description: ""
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/UpdateImage"
+          headers:
+            Host:
+              type: string
+              default: localhost:8000
+            Date:
+              type: string
+              default: Wed, 09 Aug 2023 08:34:16 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.8
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "57"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/kelas/all:
+    get:
+      summary: get all kelas
+      tags:
+        - Kelas
+      operationId: getallkelas
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getallkelas"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Tue, 12 Sep 2023 06:22:40 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/kelasByLevel:
+    get:
+      summary: get all kelas by level
+      tags:
+        - Kelas
+      operationId: getallkelasbylevel
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getallkelasbylevel"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Tue, 12 Sep 2023 06:28:22 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/kelasByName/javascript:
+    get:
+      summary: get all kelas by name
+      tags:
+        - Kelas
+      operationId: getallkelasbyname
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getallkelasbyname"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Tue, 12 Sep 2023 06:30:02 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/kelasByLevel/1:
+    get:
+      summary: get kelas by level
+      tags:
+        - Kelas
+      operationId: getkelasbylevel
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getkelasbylevel"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Tue, 12 Sep 2023 06:30:29 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "58"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/kelas/javascript:
+    get:
+      summary: get kelas by name
+      tags:
+        - Kelas
+      operationId: getkelasbyname
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getkelasbyid"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Tue, 29 Aug 2023 06:24:22 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.9
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "58"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/enrollment/javascript:
+    get:
+      summary: get enrollment by name
+      tags:
+        - Enrollment
+      operationId: getenrollmentbyname
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getenrollmentbyname"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Wed, 20 Sep 2023 06:53:37 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/enrollment/materi/update/1:
+    put:
+      summary: update enrollment materi (id_materi_history)
+      tags:
+        - Enrollment
+      operationId: updateenrollmentmateri(id_materi_history)
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/updateenrollmentmateri%28id_materi_history%29request"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/updateenrollmentmateri%28id_materi_history%29"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Sat, 09 Sep 2023 02:21:12 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.10
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "58"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/enrollment/quiz/update/1:
+    put:
+      summary: update enrollment quiz (id_quiz_history)
+      tags:
+        - Enrollment
+      operationId: updateenrollmentquiz(id_quiz_history)
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/updateenrollmentquiz%28id_quiz_history%29request"
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/updateenrollmentquiz%28id_quiz_history%29"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Sat, 09 Sep 2023 02:23:07 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.2.10
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/enrollment/rekap/2:
+    get:
+      summary: get rekap (id_enrollment)
+      tags:
+        - Enrollment
+      operationId: getrekap(id_enrollment)
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getrekap"
+          headers:
+            Host:
+              type: string
+              default: 127.0.0.1:8000
+            Date:
+              type: string
+              default: Tue, 19 Sep 2023 14:45:09 GMT
+            Connection:
+              type: string
+              default: close
+            X-Powered-By:
+              type: string
+              default: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              type: string
+              default: no-cache, private
+            X-RateLimit-Limit:
+              type: string
+              default: "60"
+            X-RateLimit-Remaining:
+              type: string
+              default: "59"
+            Vary:
+              type: string
+              default: Origin
+  /api/user/rapor:
+    get:
+      summary: get rapor
+      tags:
+        - Rapor
+      operationId: getrapor
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getrapor"
+          headers:
+            Connection:
+              type: string
+              default: Keep-Alive
+            Keep-Alive:
+              type: string
+              default: timeout=5, max=100
+            x-powered-by:
+              type: string
+              default: Niagahoster
+            cache-control:
+              type: string
+              default: no-cache, private
+            content-type:
+              type: string
+              default: application/json
+            x-ratelimit-limit:
+              type: string
+              default: "60"
+            x-ratelimit-remaining:
+              type: string
+              default: "59"
+            vary:
+              type: string
+              default: Origin,Accept-Encoding,User-Agent
+            content-length:
+              type: string
+              default: "1650"
+            content-encoding:
+              type: string
+              default: br
+            date:
+              type: string
+              default: Wed, 13 Sep 2023 07:48:59 GMT
+            server:
+              type: string
+              default: LiteSpeed
+            strict-transport-security:
+              type: string
+              default: max-age=31536000; includeSubDomains; preload
+            x-xss-protection:
+              type: string
+              default: 1; mode=block
+            x-content-type-options:
+              type: string
+              default: nosniff
+            alt-svc:
+              type: string
+              default: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+  /api/user/leaderboard:
+    get:
+      summary: get leaderboard
+      tags:
+        - Leaderboard
+      operationId: getleaderboard
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/getleaderboard"
+          examples:
+            application/json:
+              metadata:
+                code: 200
+                status: success
+                message: Berhasil menampilkan data
+              data:
+                ranking:
+                  - count: 2
+                    poin: 145
+                    user:
+                      id_user: 2
+                      name: User Voicesee
+                      email: user@nurz.site
+                      image: null
+                      email_verified_at: 2023-09-13T13:46:54.000000Z
+                      created_at: 2023-09-13T13:46:54.000000Z
+                      updated_at: 2023-09-13T13:46:54.000000Z
+                    ranking: 1
+                    active: true
+                user:
+                  count: 2
+                  poin: 145
+                  user:
+                    id_user: 2
+                    name: User Voicesee
+                    email: user@nurz.site
+                    image: null
+                    email_verified_at: 2023-09-13T13:46:54.000000Z
+                    created_at: 2023-09-13T13:46:54.000000Z
+                    updated_at: 2023-09-13T13:46:54.000000Z
+                  ranking: 1
+                  active: true
+          headers:
+            Connection:
+              type: string
+              default: Keep-Alive
+            Keep-Alive:
+              type: string
+              default: timeout=5, max=100
+            x-powered-by:
+              type: string
+              default: Niagahoster
+            cache-control:
+              type: string
+              default: no-cache, private
+            content-type:
+              type: string
+              default: application/json
+            x-ratelimit-limit:
+              type: string
+              default: "60"
+            x-ratelimit-remaining:
+              type: string
+              default: "58"
+            vary:
+              type: string
+              default: Origin,Accept-Encoding,User-Agent
+            content-length:
+              type: string
+              default: "231"
+            content-encoding:
+              type: string
+              default: br
+            date:
+              type: string
+              default: Sat, 16 Sep 2023 04:07:50 GMT
+            server:
+              type: string
+              default: LiteSpeed
+            strict-transport-security:
+              type: string
+              default: max-age=31536000; includeSubDomains; preload
+            x-xss-protection:
+              type: string
+              default: 1; mode=block
+            x-content-type-options:
+              type: string
+              default: nosniff
+            alt-svc:
+              type: string
+              default: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+  /storage/images/kelas/javasript.png:
+    get:
+      summary: get image
+      tags:
+        - Get image
+      operationId: getimage
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: ""
+          headers: {}
+definitions:
+  Metadata:
+    title: Metadata
+    example:
+      code: 201
+      status: success
+      message: User Berhasil Mendaftar
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      status:
+        type: string
+      message:
+        type: string
+    required:
+      - code
+      - status
+      - message
+  registerrequest:
+    title: Register request
+    example:
+      name: Iman Nurjaman
+      email: imannj69@gmail.com
+      password: apapun123
+      konfirmasi_password: apapun123
+      host: voicesee.co.id
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      konfirmasi_password:
+        type: string
+      host:
+        type: string
+    required:
+      - name
+      - email
+      - password
+      - konfirmasi_password
+      - host
+  register:
+    title: Register
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: User Berhasil Mendaftar
+      data:
+        name: Iman Nurjaman
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataRegister"
+    required:
+      - metadata
+      - data
+  DataRegister:
+    title: Data register
+    example:
+      name: Iman Nurjaman
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  loginrequest:
+    title: Login request
+    example:
+      email: user@nurz.site
+      password: user12345
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
+  login:
+    title: Login
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: User Berhasil Masuk
+      data:
+        token: 2|C5MA0F7mVTkeYHfKlM6oB4VmN0Kv0O5zFQ2AD07M
+        id_user: 2
+        name: Iman Nurjaman
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataLogin"
+    required:
+      - metadata
+      - data
+  DataLogin:
+    title: Data login
+    example:
+      token: 2|C5MA0F7mVTkeYHfKlM6oB4VmN0Kv0O5zFQ2AD07M
+      id_user: 2
+      name: Iman Nurjaman
+    type: object
+    properties:
+      token:
+        type: string
+      id_user:
+        type: integer
+        format: int32
+      name:
+        type: string
+    required:
+      - token
+      - id_user
+      - name
+  logout:
+    title: Logout
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: User Berhasil Logout
+      data:
+        message: User berhasil logout
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataLogout"
+    required:
+      - metadata
+      - data
+  DataLogout:
+    title: Data logout
+    example:
+      message: User berhasil logout
+    type: object
+    properties:
+      message:
+        type: string
+    required:
+      - message
+  verifyemail:
+    title: Verify email
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Berhasil Diverifikasi
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  resendemailverificationrequest:
+    title: Resend email verification request
+    example:
+      host: https://voicesee.co.id
+    type: object
+    properties:
+      host:
+        type: string
+    required:
+      - host
+  resendemailverification:
+    title: Resend email verification
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: Verifikasi Berhasil dikirim. silahkan lihat email anda
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  lupapasswordrequest:
+    title: Lupa password request
+    example:
+      email: imannurzaman39@gmail.com
+      host: https://voicesee.co.id/reset-password
+    type: object
+    properties:
+      email:
+        type: string
+      host:
+        type: string
+    required:
+      - email
+      - host
+  lupapassword:
+    title: Lupa password
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: Token berhasil dikirim ke email. Silahkan cek email anda!
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  passwordbarurequest:
+    title: Password baru request
+    example:
+      email: imannurzaman39@gmail.com
+      password: apapun123
+      password_confirmation: apapun123
+      token: e5afd080f56dfedc8ae4a34a0c7a7fc0dd5a5fd59ae37f4783d753881f33f44
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      password_confirmation:
+        type: string
+      token:
+        type: string
+    required:
+      - email
+      - password
+      - password_confirmation
+      - token
+  passwordbaru:
+    title: Password baru
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: Password berhasil di reset
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  getuser:
+    title: Get user
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: User Berhasil Ditemukan
+      data:
+        id_user: 1
+        name: Admin Voicesee
+        email: voicesee@nurz.site
+        image: null
+        email_verified_at: 2023-08-09T03:20:03.000000Z
+        created_at: 2023-08-09T03:20:03.000000Z
+        updated_at: 2023-08-09T03:20:03.000000Z
+        deleted_at: null
+        role: Admin
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataGetUser"
+    required:
+      - metadata
+      - data
+  DataGetUser:
+    title: Data get user
+    example:
+      id_user: 1
+      name: Admin Voicesee
+      email: voicesee@nurz.site
+      image: null
+      email_verified_at: 2023-08-09T03:20:03.000000Z
+      created_at: 2023-08-09T03:20:03.000000Z
+      updated_at: 2023-08-09T03:20:03.000000Z
+      deleted_at: null
+      role: Admin
+    type: object
+    properties:
+      id_user:
+        type: integer
+        format: int32
+      name:
+        type: string
+      email:
+        type: string
+      image:
+        type: string
+      email_verified_at:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      deleted_at:
+        type: string
+      role:
+        type: string
+    required:
+      - id_user
+      - name
+      - email
+      - image
+      - email_verified_at
+      - created_at
+      - updated_at
+      - deleted_at
+      - role
+  updateuserrequest:
+    title: Update user request
+    example:
+      name: Iman Nurjaman
+      email: imannj69@gmail.com
+      host: https://voicesee.co.id
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      host:
+        type: string
+    required:
+      - name
+      - email
+      - host
+  updateuser:
+    title: Update user
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: User Berhasil Diupdate
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  UpdateImage:
+    title: Update image
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: User Photo Berhasil Diupdate
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  getallkelas:
+    title: Get all kelas
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Kelas Berhasil Ditemukan
+      data:
+        id_kelas: 1
+        name: Javascript
+        description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+        image: null
+        id_level: 1
+        created_at: 2023-09-11T02:50:17.000000Z
+        updated_at: 2023-09-11T02:50:17.000000Z
+        status: jalan
+        level:
+          id_level: 1
+          name: Mudah
+          description: Materi yang mudah dipahami
+          created_at: 2023-09-11T02:50:08.000000Z
+          updated_at: 2023-09-11T02:50:08.000000Z
+        materi:
+          - id_materi: 1
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : INTRO"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+            durasi: 5000
+            poin: 20
+            created_at: 2023-09-11T02:50:22.000000Z
+            updated_at: 2023-09-12T06:08:47.000000Z
+          - id_materi: 2
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : Variable"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+            durasi: 6000
+            poin: 30
+            created_at: 2023-09-11T02:50:22.000000Z
+            updated_at: 2023-09-11T02:50:22.000000Z
+          - id_materi: 3
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+            durasi: 7000
+            poin: 40
+            created_at: 2023-09-11T02:50:22.000000Z
+            updated_at: 2023-09-11T02:50:22.000000Z
+        quiz:
+          - id_quiz: 1
+            id_kelas: 1
+            question: Apa pengertian dari Javascript?
+            true_answer: A
+            created_at: 2023-09-11T02:50:27.000000Z
+            updated_at: 2023-09-11T02:50:27.000000Z
+            options:
+              - id_option: 1
+                id_quiz: 1
+                kunci: A
+                option: Bahasa pemrograman yang digunakan untuk membuat website
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 2
+                id_quiz: 1
+                kunci: B
+                option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 3
+                id_quiz: 1
+                kunci: C
+                option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+          - id_quiz: 2
+            id_kelas: 1
+            question: Javascript dibuat oleh?
+            true_answer: B
+            created_at: 2023-09-11T02:50:27.000000Z
+            updated_at: 2023-09-11T02:50:27.000000Z
+            options:
+              - id_option: 4
+                id_quiz: 2
+                kunci: A
+                option: Brendan Eich
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 5
+                id_quiz: 2
+                kunci: B
+                option: Rasmus Lerdorf
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 6
+                id_quiz: 2
+                kunci: C
+                option: Guido van Rossum
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/DataGetAllKelas"
+    required:
+      - metadata
+      - data
+  DataGetAllKelas:
+    title: Data get all kelas
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      status:
+        type: string
+      level:
+        $ref: "#/definitions/Level"
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/Materi"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/Quiz"
+    required:
+      - id_kelas
+      - name
+      - description
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - status
+      - level
+      - materi
+      - quiz
+  Kelas:
+    title: Kelas
+    example:
+      id_kelas: 1
+      name: Javascript
+      description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+      image: null
+      id_level: 1
+      created_at: 2023-09-11T02:50:17.000000Z
+      updated_at: 2023-09-11T02:50:17.000000Z
+      status: jalan
+      materi:
+        - id_materi: 1
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : INTRO"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+          durasi: 5000
+          poin: 20
+          created_at: 2023-09-11T02:50:22.000000Z
+          updated_at: 2023-09-12T06:08:47.000000Z
+        - id_materi: 2
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Variable"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+          durasi: 6000
+          poin: 30
+          created_at: 2023-09-11T02:50:22.000000Z
+          updated_at: 2023-09-11T02:50:22.000000Z
+        - id_materi: 3
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+          durasi: 7000
+          poin: 40
+          created_at: 2023-09-11T02:50:22.000000Z
+          updated_at: 2023-09-11T02:50:22.000000Z
+      quiz:
+        - id_quiz: 1
+          id_kelas: 1
+          question: Apa pengertian dari Javascript?
+          true_answer: A
+          created_at: 2023-09-11T02:50:27.000000Z
+          updated_at: 2023-09-11T02:50:27.000000Z
+          options:
+            - id_option: 1
+              id_quiz: 1
+              kunci: A
+              option: Bahasa pemrograman yang digunakan untuk membuat website
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 2
+              id_quiz: 1
+              kunci: B
+              option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 3
+              id_quiz: 1
+              kunci: C
+              option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+        - id_quiz: 2
+          id_kelas: 1
+          question: Javascript dibuat oleh?
+          true_answer: B
+          created_at: 2023-09-11T02:50:27.000000Z
+          updated_at: 2023-09-11T02:50:27.000000Z
+          options:
+            - id_option: 4
+              id_quiz: 2
+              kunci: A
+              option: Brendan Eich
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 5
+              id_quiz: 2
+              kunci: B
+              option: Rasmus Lerdorf
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 6
+              id_quiz: 2
+              kunci: C
+              option: Guido van Rossum
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      status:
+        type: string
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/Materi"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/Quiz"
+    required:
+      - id_kelas
+      - name
+      - description
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - status
+      - materi
+      - quiz
+  Level:
+    title: Level
+    example:
+      id_level: 1
+      name: Mudah
+      description: Materi yang mudah dipahami
+      created_at: 2023-09-11T02:50:08.000000Z
+      updated_at: 2023-09-11T02:50:08.000000Z
+    type: object
+    properties:
+      id_level:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+    required:
+      - id_level
+      - name
+      - description
+      - created_at
+      - updated_at
+  Materi:
+    title: Materi
+    example:
+      id_materi: 1
+      id_kelas: 1
+      name: "Dasar Pemrograman dengan Javascript : INTRO"
+      materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+      url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+      durasi: 5000
+      poin: 20
+      created_at: 2023-09-11T02:50:22.000000Z
+      updated_at: 2023-09-12T06:08:47.000000Z
+    type: object
+    properties:
+      id_materi:
+        type: integer
+        format: int32
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      materi:
+        type: string
+      url:
+        type: string
+      durasi:
+        type: integer
+        format: int32
+      poin:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+    required:
+      - id_materi
+      - id_kelas
+      - name
+      - materi
+      - url
+      - durasi
+      - poin
+      - created_at
+      - updated_at
+  Quiz:
+    title: Quiz
+    example:
+      id_quiz: 1
+      id_kelas: 1
+      question: Apa pengertian dari Javascript?
+      true_answer: A
+      created_at: 2023-09-11T02:50:27.000000Z
+      updated_at: 2023-09-11T02:50:27.000000Z
+      options:
+        - id_option: 1
+          id_quiz: 1
+          kunci: A
+          option: Bahasa pemrograman yang digunakan untuk membuat website
+          created_at: 2023-09-11T02:50:35.000000Z
+          updated_at: 2023-09-11T02:50:35.000000Z
+        - id_option: 2
+          id_quiz: 1
+          kunci: B
+          option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+          created_at: 2023-09-11T02:50:35.000000Z
+          updated_at: 2023-09-11T02:50:35.000000Z
+        - id_option: 3
+          id_quiz: 1
+          kunci: C
+          option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+          created_at: 2023-09-11T02:50:35.000000Z
+          updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      id_quiz:
+        type: integer
+        format: int32
+      id_kelas:
+        type: integer
+        format: int32
+      question:
+        type: string
+      true_answer:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      options:
+        type: array
+        items:
+          $ref: "#/definitions/Option"
+    required:
+      - id_quiz
+      - id_kelas
+      - question
+      - true_answer
+      - created_at
+      - updated_at
+      - options
+  Option:
+    title: Option
+    example:
+      id_option: 1
+      id_quiz: 1
+      kunci: A
+      option: Bahasa pemrograman yang digunakan untuk membuat website
+      created_at: 2023-09-11T02:50:35.000000Z
+      updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      id_option:
+        type: integer
+        format: int32
+      id_quiz:
+        type: integer
+        format: int32
+      kunci:
+        type: string
+      option:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+    required:
+      - id_option
+      - id_quiz
+      - kunci
+      - option
+      - created_at
+      - updated_at
+  getallkelasbylevel:
+    title: Get all kelas by level
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Kelas berhasil ditampilkan sesuai level
+      data:
+        - id_level: 1
+          name: Mudah
+          description: Materi yang mudah dipahami
+          created_at: 2023-09-11T02:50:08.000000Z
+          updated_at: 2023-09-11T02:50:08.000000Z
+          kelas:
+            - id_kelas: 1
+              name: Javascript
+              description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+              image: null
+              id_level: 1
+              created_at: 2023-09-11T02:50:17.000000Z
+              updated_at: 2023-09-11T02:50:17.000000Z
+              status: jalan
+              materi:
+                - id_materi: 1
+                  id_kelas: 1
+                  name: "Dasar Pemrograman dengan Javascript : INTRO"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+                  durasi: 5000
+                  poin: 20
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-12T06:08:47.000000Z
+                - id_materi: 2
+                  id_kelas: 1
+                  name: "Dasar Pemrograman dengan Javascript : Variable"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+                  durasi: 6000
+                  poin: 30
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 3
+                  id_kelas: 1
+                  name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+                  durasi: 7000
+                  poin: 40
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+              quiz:
+                - id_quiz: 1
+                  id_kelas: 1
+                  question: Apa pengertian dari Javascript?
+                  true_answer: A
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 1
+                      id_quiz: 1
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 2
+                      id_quiz: 1
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 3
+                      id_quiz: 1
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 2
+                  id_kelas: 1
+                  question: Javascript dibuat oleh?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 4
+                      id_quiz: 2
+                      kunci: A
+                      option: Brendan Eich
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 5
+                      id_quiz: 2
+                      kunci: B
+                      option: Rasmus Lerdorf
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 6
+                      id_quiz: 2
+                      kunci: C
+                      option: Guido van Rossum
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+            - id_kelas: 4
+              name: HTML
+              description: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+              image: null
+              id_level: 1
+              created_at: 2023-09-11T02:50:17.000000Z
+              updated_at: 2023-09-11T02:50:17.000000Z
+              status: belum
+              materi:
+                - id_materi: 10
+                  id_kelas: 4
+                  name: "Dasar Pemrograman dengan HTML : INTRO"
+                  materi: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&ab_channel=WebProgrammingUNPAS
+                  durasi: 6000
+                  poin: 30
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 11
+                  id_kelas: 4
+                  name: "Dasar Pemrograman dengan HTML : Variable"
+                  materi: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=2&ab_channel=WebProgrammingUNPAS
+                  durasi: 7000
+                  poin: 40
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 12
+                  id_kelas: 4
+                  name: "Dasar Pemrograman dengan HTML : Tipe Data"
+                  materi: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=3&ab_channel=WebProgrammingUNPAS
+                  durasi: 8000
+                  poin: 50
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+              quiz:
+                - id_quiz: 8
+                  id_kelas: 4
+                  question: Apa pengertian dari HTML?
+                  true_answer: A
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 22
+                      id_quiz: 8
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 23
+                      id_quiz: 8
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 24
+                      id_quiz: 8
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 9
+                  id_kelas: 4
+                  question: HTML dibuat oleh?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 25
+                      id_quiz: 9
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 26
+                      id_quiz: 9
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 27
+                      id_quiz: 9
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+        - id_level: 2
+          name: Normal
+          description: Materi yang biasa saja
+          created_at: 2023-09-11T02:50:08.000000Z
+          updated_at: 2023-09-11T02:50:08.000000Z
+          kelas:
+            - id_kelas: 2
+              name: PHP
+              description: Hypertext Preprocessor atau hanya PHP saja, adalah bahasa skrip dengan fungsi umum yang terutama digunakan untuk pengembangan web.
+              image: null
+              id_level: 2
+              created_at: 2023-09-11T02:50:17.000000Z
+              updated_at: 2023-09-11T02:50:17.000000Z
+              status: belum
+              materi:
+                - id_materi: 4
+                  id_kelas: 2
+                  name: "Dasar Pemrograman dengan PHP : INTRO"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=l1W2OwV5rgY&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&ab_channel=WebProgrammingUNPAS
+                  durasi: 5500
+                  poin: 30
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 5
+                  id_kelas: 2
+                  name: "Dasar Pemrograman dengan PHP : Variable"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=q3NVC5JxgVI&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&index=2&ab_channel=WebProgrammingUNPAS
+                  durasi: 6500
+                  poin: 40
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 6
+                  id_kelas: 2
+                  name: "Dasar Pemrograman dengan PHP : Tipe Data"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=o8oLQVYlpqw&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&index=3&ab_channel=WebProgrammingUNPAS
+                  durasi: 7500
+                  poin: 50
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+              quiz:
+                - id_quiz: 3
+                  id_kelas: 2
+                  question: PHP dibuat oleh?
+                  true_answer: A
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 7
+                      id_quiz: 3
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 8
+                      id_quiz: 3
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 9
+                      id_quiz: 3
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 4
+                  id_kelas: 2
+                  question: Apa pengertian dari PHP?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 10
+                      id_quiz: 4
+                      kunci: A
+                      option: Rasmus Lerdorf
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 11
+                      id_quiz: 4
+                      kunci: B
+                      option: Brendan Eich
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 12
+                      id_quiz: 4
+                      kunci: C
+                      option: Guido van Rossum
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+            - id_kelas: 5
+              name: CSS
+              description: CSS adalah singkatan dari Cascading Style Sheets. CSS adalah bahasa gaya yang digunakan untuk mendefinisikan tata letak dari dokumen HTML.
+              image: null
+              id_level: 2
+              created_at: 2023-09-11T02:50:17.000000Z
+              updated_at: 2023-09-11T02:50:17.000000Z
+              status: belum
+              materi:
+                - id_materi: 13
+                  id_kelas: 5
+                  name: "Dasar Pemrograman dengan CSS : INTRO"
+                  materi: CSS adalah singkatan dari Cascading Style Sheets. CSS adalah bahasa gaya yang digunakan untuk mendefinisikan tata letak dari dokumen HTML.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&ab_channel=WebProgrammingUNPAS
+                  durasi: 6000
+                  poin: 30
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 14
+                  id_kelas: 5
+                  name: "Dasar Pemrograman dengan CSS : Variable"
+                  materi: CSS adalah singkatan dari Cascading Style Sheets. CSS adalah bahasa gaya yang digunakan untuk mendefinisikan tata letak dari dokumen HTML.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=2&ab_channel=WebProgrammingUNPAS
+                  durasi: 7000
+                  poin: 40
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 15
+                  id_kelas: 5
+                  name: "Dasar Pemrograman dengan CSS : Tipe Data"
+                  materi: CSS adalah singkatan dari Cascading Style Sheets. CSS adalah bahasa gaya yang digunakan untuk mendefinisikan tata letak dari dokumen HTML.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=3&ab_channel=WebProgrammingUNPAS
+                  durasi: 8000
+                  poin: 50
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+              quiz:
+                - id_quiz: 10
+                  id_kelas: 5
+                  question: Apa pengertian dari CSS?
+                  true_answer: A
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 28
+                      id_quiz: 10
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 29
+                      id_quiz: 10
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 30
+                      id_quiz: 10
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 11
+                  id_kelas: 5
+                  question: CSS dibuat oleh?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 31
+                      id_quiz: 11
+                      kunci: A
+                      option: Guido van Rossum
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 32
+                      id_quiz: 11
+                      kunci: B
+                      option: Brendan Eich
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 33
+                      id_quiz: 11
+                      kunci: C
+                      option: Rasmus Lerdorf
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+        - id_level: 3
+          name: Sulit
+          description: Materi yang sulit dipahami
+          created_at: 2023-09-11T02:50:08.000000Z
+          updated_at: 2023-09-11T02:50:08.000000Z
+          kelas:
+            - id_kelas: 3
+              name: Python
+              description: Python adalah bahasa pemrograman interpretatif multiguna dengan filosofi perancangan yang berfokus pada tingkat keterbacaan kode.
+              image: null
+              id_level: 3
+              created_at: 2023-09-11T02:50:17.000000Z
+              updated_at: 2023-09-11T02:50:17.000000Z
+              status: belum
+              materi:
+                - id_materi: 7
+                  id_kelas: 3
+                  name: "Dasar Pemrograman dengan Python : INTRO"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&ab_channel=WebProgrammingUNPAS
+                  durasi: 6000
+                  poin: 30
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 8
+                  id_kelas: 3
+                  name: "Dasar Pemrograman dengan Python : Variable"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=2&ab_channel=WebProgrammingUNPAS
+                  durasi: 7000
+                  poin: 40
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 9
+                  id_kelas: 3
+                  name: "Dasar Pemrograman dengan Python : Tipe Data"
+                  materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=3&ab_channel=WebProgrammingUNPAS
+                  durasi: 8000
+                  poin: 50
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+              quiz:
+                - id_quiz: 5
+                  id_kelas: 3
+                  question: Apa pengertian dari PHP?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 13
+                      id_quiz: 5
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 14
+                      id_quiz: 5
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 15
+                      id_quiz: 5
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 6
+                  id_kelas: 3
+                  question: Apa pengertian dari Python?
+                  true_answer: A
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 16
+                      id_quiz: 6
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 17
+                      id_quiz: 6
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 18
+                      id_quiz: 6
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 7
+                  id_kelas: 3
+                  question: Python dibuat oleh?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 19
+                      id_quiz: 7
+                      kunci: A
+                      option: Guido van Rossum
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 20
+                      id_quiz: 7
+                      kunci: B
+                      option: Brendan Eich
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 21
+                      id_quiz: 7
+                      kunci: C
+                      option: Rasmus Lerdorf
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+            - id_kelas: 6
+              name: Java
+              description: Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam.
+              image: null
+              id_level: 3
+              created_at: 2023-09-11T02:50:17.000000Z
+              updated_at: 2023-09-11T02:50:17.000000Z
+              status: belum
+              materi:
+                - id_materi: 16
+                  id_kelas: 6
+                  name: "Dasar Pemrograman dengan Java : INTRO"
+                  materi: Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&ab_channel=WebProgrammingUNPAS
+                  durasi: 6000
+                  poin: 30
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 17
+                  id_kelas: 6
+                  name: "Dasar Pemrograman dengan Java : Variable"
+                  materi: Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=2&ab_channel=WebProgrammingUNPAS
+                  durasi: 7000
+                  poin: 40
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+                - id_materi: 18
+                  id_kelas: 6
+                  name: "Dasar Pemrograman dengan Java : Tipe Data"
+                  materi: Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam.
+                  url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=3&ab_channel=WebProgrammingUNPAS
+                  durasi: 8000
+                  poin: 50
+                  created_at: 2023-09-11T02:50:22.000000Z
+                  updated_at: 2023-09-11T02:50:22.000000Z
+              quiz:
+                - id_quiz: 12
+                  id_kelas: 6
+                  question: Apa pengertian dari Java?
+                  true_answer: A
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 34
+                      id_quiz: 12
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 35
+                      id_quiz: 12
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 36
+                      id_quiz: 12
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                - id_quiz: 13
+                  id_kelas: 6
+                  question: Java dibuat oleh?
+                  true_answer: B
+                  created_at: 2023-09-11T02:50:27.000000Z
+                  updated_at: 2023-09-11T02:50:27.000000Z
+                  options:
+                    - id_option: 37
+                      id_quiz: 13
+                      kunci: A
+                      option: Bahasa pemrograman yang digunakan untuk membuat website
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 38
+                      id_quiz: 13
+                      kunci: B
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+                    - id_option: 39
+                      id_quiz: 13
+                      kunci: C
+                      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                      created_at: 2023-09-11T02:50:35.000000Z
+                      updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/DataGetKelasByLevel"
+    required:
+      - metadata
+      - data
+  DataGetKelasByLevel:
+    title: Data get kelas by level
+    type: object
+    properties:
+      id_level:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      kelas:
+        type: array
+        items:
+          $ref: "#/definitions/Kelas"
+    required:
+      - id_level
+      - name
+      - description
+      - created_at
+      - updated_at
+      - kelas
+  getallkelasbyname:
+    title: Get all kelas by name
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Kelas berhasil ditampilkan
+      data:
+        - id_kelas: 1
+          name: Javascript
+          description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+          image: null
+          id_level: 1
+          created_at: 2023-09-11T02:50:17.000000Z
+          updated_at: 2023-09-11T02:50:17.000000Z
+          status: jalan
+          materi:
+            - id_materi: 1
+              id_kelas: 1
+              name: "Dasar Pemrograman dengan Javascript : INTRO"
+              materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+              url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+              durasi: 5000
+              poin: 20
+              created_at: 2023-09-11T02:50:22.000000Z
+              updated_at: 2023-09-12T06:08:47.000000Z
+            - id_materi: 2
+              id_kelas: 1
+              name: "Dasar Pemrograman dengan Javascript : Variable"
+              materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+              url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+              durasi: 6000
+              poin: 30
+              created_at: 2023-09-11T02:50:22.000000Z
+              updated_at: 2023-09-11T02:50:22.000000Z
+            - id_materi: 3
+              id_kelas: 1
+              name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+              materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+              url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+              durasi: 7000
+              poin: 40
+              created_at: 2023-09-11T02:50:22.000000Z
+              updated_at: 2023-09-11T02:50:22.000000Z
+          quiz:
+            - id_quiz: 1
+              id_kelas: 1
+              question: Apa pengertian dari Javascript?
+              true_answer: A
+              created_at: 2023-09-11T02:50:27.000000Z
+              updated_at: 2023-09-11T02:50:27.000000Z
+              options:
+                - id_option: 1
+                  id_quiz: 1
+                  kunci: A
+                  option: Bahasa pemrograman yang digunakan untuk membuat website
+                  created_at: 2023-09-11T02:50:35.000000Z
+                  updated_at: 2023-09-11T02:50:35.000000Z
+                - id_option: 2
+                  id_quiz: 1
+                  kunci: B
+                  option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                  created_at: 2023-09-11T02:50:35.000000Z
+                  updated_at: 2023-09-11T02:50:35.000000Z
+                - id_option: 3
+                  id_quiz: 1
+                  kunci: C
+                  option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                  created_at: 2023-09-11T02:50:35.000000Z
+                  updated_at: 2023-09-11T02:50:35.000000Z
+            - id_quiz: 2
+              id_kelas: 1
+              question: Javascript dibuat oleh?
+              true_answer: B
+              created_at: 2023-09-11T02:50:27.000000Z
+              updated_at: 2023-09-11T02:50:27.000000Z
+              options:
+                - id_option: 4
+                  id_quiz: 2
+                  kunci: A
+                  option: Brendan Eich
+                  created_at: 2023-09-11T02:50:35.000000Z
+                  updated_at: 2023-09-11T02:50:35.000000Z
+                - id_option: 5
+                  id_quiz: 2
+                  kunci: B
+                  option: Rasmus Lerdorf
+                  created_at: 2023-09-11T02:50:35.000000Z
+                  updated_at: 2023-09-11T02:50:35.000000Z
+                - id_option: 6
+                  id_quiz: 2
+                  kunci: C
+                  option: Guido van Rossum
+                  created_at: 2023-09-11T02:50:35.000000Z
+                  updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/DataGetAllKelasByName"
+    required:
+      - metadata
+      - data
+  DataGetAllKelasByName:
+    title: Data get all kelas by name
+    example:
+      id_kelas: 1
+      name: Javascript
+      description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+      image: null
+      id_level: 1
+      created_at: 2023-09-11T02:50:17.000000Z
+      updated_at: 2023-09-11T02:50:17.000000Z
+      status: jalan
+      materi:
+        - id_materi: 1
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : INTRO"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+          durasi: 5000
+          poin: 20
+          created_at: 2023-09-11T02:50:22.000000Z
+          updated_at: 2023-09-12T06:08:47.000000Z
+        - id_materi: 2
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Variable"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+          durasi: 6000
+          poin: 30
+          created_at: 2023-09-11T02:50:22.000000Z
+          updated_at: 2023-09-11T02:50:22.000000Z
+        - id_materi: 3
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+          durasi: 7000
+          poin: 40
+          created_at: 2023-09-11T02:50:22.000000Z
+          updated_at: 2023-09-11T02:50:22.000000Z
+      quiz:
+        - id_quiz: 1
+          id_kelas: 1
+          question: Apa pengertian dari Javascript?
+          true_answer: A
+          created_at: 2023-09-11T02:50:27.000000Z
+          updated_at: 2023-09-11T02:50:27.000000Z
+          options:
+            - id_option: 1
+              id_quiz: 1
+              kunci: A
+              option: Bahasa pemrograman yang digunakan untuk membuat website
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 2
+              id_quiz: 1
+              kunci: B
+              option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 3
+              id_quiz: 1
+              kunci: C
+              option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+        - id_quiz: 2
+          id_kelas: 1
+          question: Javascript dibuat oleh?
+          true_answer: B
+          created_at: 2023-09-11T02:50:27.000000Z
+          updated_at: 2023-09-11T02:50:27.000000Z
+          options:
+            - id_option: 4
+              id_quiz: 2
+              kunci: A
+              option: Brendan Eich
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 5
+              id_quiz: 2
+              kunci: B
+              option: Rasmus Lerdorf
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+            - id_option: 6
+              id_quiz: 2
+              kunci: C
+              option: Guido van Rossum
+              created_at: 2023-09-11T02:50:35.000000Z
+              updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      status:
+        type: string
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/Materi"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/Quiz"
+    required:
+      - id_kelas
+      - name
+      - description
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - status
+      - materi
+      - quiz
+  getkelasbylevel:
+    title: Get kelas by level
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Level Kelas berhasil ditampilkan
+      data:
+        id_level: 1
+        name: Mudah
+        description: Materi yang mudah dipahami
+        created_at: 2023-09-11T02:50:08.000000Z
+        updated_at: 2023-09-11T02:50:08.000000Z
+        kelas:
+          - id_kelas: 1
+            name: Javascript
+            description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+            image: null
+            id_level: 1
+            created_at: 2023-09-11T02:50:17.000000Z
+            updated_at: 2023-09-11T02:50:17.000000Z
+            status: jalan
+            materi:
+              - id_materi: 1
+                id_kelas: 1
+                name: "Dasar Pemrograman dengan Javascript : INTRO"
+                materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+                durasi: 5000
+                poin: 20
+                created_at: 2023-09-11T02:50:22.000000Z
+                updated_at: 2023-09-12T06:08:47.000000Z
+              - id_materi: 2
+                id_kelas: 1
+                name: "Dasar Pemrograman dengan Javascript : Variable"
+                materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+                durasi: 6000
+                poin: 30
+                created_at: 2023-09-11T02:50:22.000000Z
+                updated_at: 2023-09-11T02:50:22.000000Z
+              - id_materi: 3
+                id_kelas: 1
+                name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+                materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+                url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+                durasi: 7000
+                poin: 40
+                created_at: 2023-09-11T02:50:22.000000Z
+                updated_at: 2023-09-11T02:50:22.000000Z
+            quiz:
+              - id_quiz: 1
+                id_kelas: 1
+                question: Apa pengertian dari Javascript?
+                true_answer: A
+                created_at: 2023-09-11T02:50:27.000000Z
+                updated_at: 2023-09-11T02:50:27.000000Z
+                options:
+                  - id_option: 1
+                    id_quiz: 1
+                    kunci: A
+                    option: Bahasa pemrograman yang digunakan untuk membuat website
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 2
+                    id_quiz: 1
+                    kunci: B
+                    option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 3
+                    id_quiz: 1
+                    kunci: C
+                    option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+              - id_quiz: 2
+                id_kelas: 1
+                question: Javascript dibuat oleh?
+                true_answer: B
+                created_at: 2023-09-11T02:50:27.000000Z
+                updated_at: 2023-09-11T02:50:27.000000Z
+                options:
+                  - id_option: 4
+                    id_quiz: 2
+                    kunci: A
+                    option: Brendan Eich
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 5
+                    id_quiz: 2
+                    kunci: B
+                    option: Rasmus Lerdorf
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 6
+                    id_quiz: 2
+                    kunci: C
+                    option: Guido van Rossum
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+          - id_kelas: 4
+            name: HTML
+            description: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+            image: null
+            id_level: 1
+            created_at: 2023-09-11T02:50:17.000000Z
+            updated_at: 2023-09-11T02:50:17.000000Z
+            status: belum
+            materi:
+              - id_materi: 10
+                id_kelas: 4
+                name: "Dasar Pemrograman dengan HTML : INTRO"
+                materi: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+                url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&ab_channel=WebProgrammingUNPAS
+                durasi: 6000
+                poin: 30
+                created_at: 2023-09-11T02:50:22.000000Z
+                updated_at: 2023-09-11T02:50:22.000000Z
+              - id_materi: 11
+                id_kelas: 4
+                name: "Dasar Pemrograman dengan HTML : Variable"
+                materi: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+                url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=2&ab_channel=WebProgrammingUNPAS
+                durasi: 7000
+                poin: 40
+                created_at: 2023-09-11T02:50:22.000000Z
+                updated_at: 2023-09-11T02:50:22.000000Z
+              - id_materi: 12
+                id_kelas: 4
+                name: "Dasar Pemrograman dengan HTML : Tipe Data"
+                materi: HTML adalah singkatan dari Hypertext Markup Language. HTML adalah bahasa markup standar untuk dokumen yang dirancang untuk ditampilkan di peramban web.
+                url: https://www.youtube.com/watch?v=QXeEoD0pB3E&list=PLFIM0718LjIVCmrSWbZPKCccCkfFw-Naa&index=3&ab_channel=WebProgrammingUNPAS
+                durasi: 8000
+                poin: 50
+                created_at: 2023-09-11T02:50:22.000000Z
+                updated_at: 2023-09-11T02:50:22.000000Z
+            quiz:
+              - id_quiz: 8
+                id_kelas: 4
+                question: Apa pengertian dari HTML?
+                true_answer: A
+                created_at: 2023-09-11T02:50:27.000000Z
+                updated_at: 2023-09-11T02:50:27.000000Z
+                options:
+                  - id_option: 22
+                    id_quiz: 8
+                    kunci: A
+                    option: Bahasa pemrograman yang digunakan untuk membuat website
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 23
+                    id_quiz: 8
+                    kunci: B
+                    option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 24
+                    id_quiz: 8
+                    kunci: C
+                    option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+              - id_quiz: 9
+                id_kelas: 4
+                question: HTML dibuat oleh?
+                true_answer: B
+                created_at: 2023-09-11T02:50:27.000000Z
+                updated_at: 2023-09-11T02:50:27.000000Z
+                options:
+                  - id_option: 25
+                    id_quiz: 9
+                    kunci: A
+                    option: Bahasa pemrograman yang digunakan untuk membuat website
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 26
+                    id_quiz: 9
+                    kunci: B
+                    option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+                  - id_option: 27
+                    id_quiz: 9
+                    kunci: C
+                    option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                    created_at: 2023-09-11T02:50:35.000000Z
+                    updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataGetKelasByLevel"
+    required:
+      - metadata
+      - data
+  getkelasbyid:
+    title: Get kelas by id
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Kelas Berhasil Ditemukan
+      data:
+        id_kelas: 1
+        name: Javascript
+        description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+        image: null
+        id_level: 1
+        created_at: 2023-09-11T02:50:17.000000Z
+        updated_at: 2023-09-11T02:50:17.000000Z
+        status: jalan
+        materi:
+          - id_materi: 1
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : INTRO"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+            durasi: 5000
+            poin: 20
+            created_at: 2023-09-11T02:50:22.000000Z
+            updated_at: 2023-09-12T06:08:47.000000Z
+          - id_materi: 2
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : Variable"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+            durasi: 6000
+            poin: 30
+            created_at: 2023-09-11T02:50:22.000000Z
+            updated_at: 2023-09-11T02:50:22.000000Z
+          - id_materi: 3
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+            durasi: 7000
+            poin: 40
+            created_at: 2023-09-11T02:50:22.000000Z
+            updated_at: 2023-09-11T02:50:22.000000Z
+        quiz:
+          - id_quiz: 1
+            id_kelas: 1
+            question: Apa pengertian dari Javascript?
+            true_answer: A
+            created_at: 2023-09-11T02:50:27.000000Z
+            updated_at: 2023-09-11T02:50:27.000000Z
+            options:
+              - id_option: 1
+                id_quiz: 1
+                kunci: A
+                option: Bahasa pemrograman yang digunakan untuk membuat website
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 2
+                id_quiz: 1
+                kunci: B
+                option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 3
+                id_quiz: 1
+                kunci: C
+                option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+          - id_quiz: 2
+            id_kelas: 1
+            question: Javascript dibuat oleh?
+            true_answer: B
+            created_at: 2023-09-11T02:50:27.000000Z
+            updated_at: 2023-09-11T02:50:27.000000Z
+            options:
+              - id_option: 4
+                id_quiz: 2
+                kunci: A
+                option: Brendan Eich
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 5
+                id_quiz: 2
+                kunci: B
+                option: Rasmus Lerdorf
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+              - id_option: 6
+                id_quiz: 2
+                kunci: C
+                option: Guido van Rossum
+                created_at: 2023-09-11T02:50:35.000000Z
+                updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataGetKelasById"
+    required:
+      - metadata
+      - data
+  DataGetKelasById:
+    title: Data get kelas by id
+    example:
+      id_kelas: 1
+      name: Javascript
+      image: images/kelas/K3ZGEzFq6wBAXNVFnwl0EIliFk4BW74CboH3tqVM.jpg
+      id_level: 1
+      created_at: 2023-08-19T07:27:06.000000Z
+      updated_at: 2023-08-19T07:27:06.000000Z
+      level:
+        id_level: 1
+        name: Mudah
+        description: Materi yang mudah dipahami
+        created_at: 2023-08-16T04:52:32.000000Z
+        updated_at: 2023-08-16T04:52:32.000000Z
+      materi:
+        - id_materi: 1
+          id_kelas: 1
+          name: Javascript pendahuluan
+          materi: lorem ipsum mbvbnkjhgfghjklkjhgfdsdfghjk
+          url: youtube.com
+          created_at: 2023-08-19T07:44:48.000000Z
+          updated_at: 2023-08-19T07:44:48.000000Z
+        - id_materi: 2
+          id_kelas: 1
+          name: Javascript pendahuluan 2
+          materi: lorem ipsum mbvbnkjhgfghjklkjhgfdsdfghjk
+          url: youtube.com
+          created_at: 2023-08-19T07:45:40.000000Z
+          updated_at: 2023-08-19T07:45:40.000000Z
+      quiz:
+        - id_quiz: 1
+          id_kelas: 1
+          question: Bagaimana cara memberikan ini
+          true_answer: A
+          created_at: 2023-08-28T14:24:27.000000Z
+          updated_at: 2023-08-28T14:24:27.000000Z
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      level:
+        $ref: "#/definitions/Level"
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/Materi"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/Quiz"
+    required:
+      - id_kelas
+      - name
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - level
+      - materi
+      - quiz
+  getenrollmentbyname:
+    title: Get enrollment by name
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Berhasil mengambil data
+      data:
+        id_enrollment: 1
+        kelas:
+          id_kelas: 1
+          name: Javascript
+          description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+          image: null
+          id_level: 1
+          created_at: 2023-09-14T04:15:47.000000Z
+          updated_at: 2023-09-14T04:15:47.000000Z
+          progress: 0%
+          materi:
+            - id_materi: 1
+              id_kelas: 1
+              name: "Dasar Pemrograman dengan Javascript : INTRO"
+              materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+              url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+              durasi: 5000
+              poin: 20
+              created_at: 2023-09-14T04:15:51.000000Z
+              updated_at: 2023-09-14T04:15:51.000000Z
+              id_materi_history: 1
+              status: jalan
+              playback: 60
+            - id_materi: 2
+              id_kelas: 1
+              name: "Dasar Pemrograman dengan Javascript : Variable"
+              materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+              url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+              durasi: 6000
+              poin: 30
+              created_at: 2023-09-14T04:15:51.000000Z
+              updated_at: 2023-09-14T04:15:51.000000Z
+              id_materi_history: 2
+              status: belum
+              playback: 0
+            - id_materi: 3
+              id_kelas: 1
+              name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+              materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+              url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+              durasi: 7000
+              poin: 40
+              created_at: 2023-09-14T04:15:51.000000Z
+              updated_at: 2023-09-14T04:15:51.000000Z
+              id_materi_history: 3
+              status: belum
+              playback: 0
+          quiz:
+            - id_quiz: 1
+              id_kelas: 1
+              question: Pengertian dari Javascript
+              true_answer: A
+              created_at: 2023-09-14T04:15:56.000000Z
+              updated_at: 2023-09-14T07:23:52.000000Z
+              id_quiz_history: 1
+              status: belum
+              answer: null
+              options:
+                - id_option: 1
+                  id_quiz: 1
+                  kunci: A
+                  option: ini adalah a
+                  created_at: 2023-09-14T04:15:58.000000Z
+                  updated_at: 2023-09-14T08:08:52.000000Z
+                - id_option: 2
+                  id_quiz: 1
+                  kunci: B
+                  option: ini adalah b
+                  created_at: 2023-09-14T04:15:58.000000Z
+                  updated_at: 2023-09-14T08:08:52.000000Z
+                - id_option: 3
+                  id_quiz: 1
+                  kunci: C
+                  option: ini adalah c
+                  created_at: 2023-09-14T04:15:58.000000Z
+                  updated_at: 2023-09-14T08:08:52.000000Z
+            - id_quiz: 2
+              id_kelas: 1
+              question: Javascript dibuat oleh?
+              true_answer: B
+              created_at: 2023-09-14T04:15:56.000000Z
+              updated_at: 2023-09-14T04:15:56.000000Z
+              id_quiz_history: 2
+              status: belum
+              answer: null
+              options:
+                - id_option: 4
+                  id_quiz: 2
+                  kunci: A
+                  option: Brendan Eich
+                  created_at: 2023-09-14T04:15:58.000000Z
+                  updated_at: 2023-09-14T04:15:58.000000Z
+                - id_option: 5
+                  id_quiz: 2
+                  kunci: B
+                  option: Guido van Rossum
+                  created_at: 2023-09-14T04:15:58.000000Z
+                  updated_at: 2023-09-14T04:15:58.000000Z
+                - id_option: 6
+                  id_quiz: 2
+                  kunci: C
+                  option: Rasmus Lerdorf
+                  created_at: 2023-09-14T04:15:58.000000Z
+                  updated_at: 2023-09-14T04:15:58.000000Z
+            - id_quiz: 13
+              id_kelas: 1
+              question: javascript digunakan untuk?
+              true_answer: A
+              created_at: 2023-09-14T08:01:05.000000Z
+              updated_at: 2023-09-14T08:01:05.000000Z
+              id_quiz_history: 3
+              status: belum
+              answer: null
+              options:
+                - id_option: 37
+                  id_quiz: 13
+                  kunci: A
+                  option: bahasa pemrograman yang bisa memanipulasi tampilan dengan real time
+                  created_at: 2023-09-14T08:01:05.000000Z
+                  updated_at: 2023-09-14T08:01:05.000000Z
+                - id_option: 38
+                  id_quiz: 13
+                  kunci: B
+                  option: bahasa pemrograman yang bisa memperlihatkan yang bagus
+                  created_at: 2023-09-14T08:01:05.000000Z
+                  updated_at: 2023-09-14T08:01:05.000000Z
+                - id_option: 39
+                  id_quiz: 13
+                  kunci: C
+                  option: bahasa pemrograman yang bisa membuat aplikasi desktop
+                  created_at: 2023-09-14T08:01:05.000000Z
+                  updated_at: 2023-09-14T08:01:05.000000Z
+        poin: 2
+        nilai: 0
+        status: jalan
+        progress: 0
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataEnrollment"
+    required:
+      - metadata
+      - data
+  DataEnrollment:
+    title: Data Enrollment
+    example:
+      id_enrollment: 1
+      kelas:
+        id_kelas: 1
+        name: Javascript
+        description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+        image: null
+        id_level: 1
+        created_at: 2023-09-14T04:15:47.000000Z
+        updated_at: 2023-09-14T04:15:47.000000Z
+        progress: 0%
+        materi:
+          - id_materi: 1
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : INTRO"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+            durasi: 5000
+            poin: 20
+            created_at: 2023-09-14T04:15:51.000000Z
+            updated_at: 2023-09-14T04:15:51.000000Z
+            id_materi_history: 1
+            status: jalan
+            playback: 60
+          - id_materi: 2
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : Variable"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+            durasi: 6000
+            poin: 30
+            created_at: 2023-09-14T04:15:51.000000Z
+            updated_at: 2023-09-14T04:15:51.000000Z
+            id_materi_history: 2
+            status: belum
+            playback: 0
+          - id_materi: 3
+            id_kelas: 1
+            name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+            materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+            url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+            durasi: 7000
+            poin: 40
+            created_at: 2023-09-14T04:15:51.000000Z
+            updated_at: 2023-09-14T04:15:51.000000Z
+            id_materi_history: 3
+            status: belum
+            playback: 0
+        quiz:
+          - id_quiz: 1
+            id_kelas: 1
+            question: Pengertian dari Javascript
+            true_answer: A
+            created_at: 2023-09-14T04:15:56.000000Z
+            updated_at: 2023-09-14T07:23:52.000000Z
+            id_quiz_history: 1
+            status: belum
+            answer: null
+            options:
+              - id_option: 1
+                id_quiz: 1
+                kunci: A
+                option: ini adalah a
+                created_at: 2023-09-14T04:15:58.000000Z
+                updated_at: 2023-09-14T08:08:52.000000Z
+              - id_option: 2
+                id_quiz: 1
+                kunci: B
+                option: ini adalah b
+                created_at: 2023-09-14T04:15:58.000000Z
+                updated_at: 2023-09-14T08:08:52.000000Z
+              - id_option: 3
+                id_quiz: 1
+                kunci: C
+                option: ini adalah c
+                created_at: 2023-09-14T04:15:58.000000Z
+                updated_at: 2023-09-14T08:08:52.000000Z
+          - id_quiz: 2
+            id_kelas: 1
+            question: Javascript dibuat oleh?
+            true_answer: B
+            created_at: 2023-09-14T04:15:56.000000Z
+            updated_at: 2023-09-14T04:15:56.000000Z
+            id_quiz_history: 2
+            status: belum
+            answer: null
+            options:
+              - id_option: 4
+                id_quiz: 2
+                kunci: A
+                option: Brendan Eich
+                created_at: 2023-09-14T04:15:58.000000Z
+                updated_at: 2023-09-14T04:15:58.000000Z
+              - id_option: 5
+                id_quiz: 2
+                kunci: B
+                option: Guido van Rossum
+                created_at: 2023-09-14T04:15:58.000000Z
+                updated_at: 2023-09-14T04:15:58.000000Z
+              - id_option: 6
+                id_quiz: 2
+                kunci: C
+                option: Rasmus Lerdorf
+                created_at: 2023-09-14T04:15:58.000000Z
+                updated_at: 2023-09-14T04:15:58.000000Z
+          - id_quiz: 13
+            id_kelas: 1
+            question: javascript digunakan untuk?
+            true_answer: A
+            created_at: 2023-09-14T08:01:05.000000Z
+            updated_at: 2023-09-14T08:01:05.000000Z
+            id_quiz_history: 3
+            status: belum
+            answer: null
+            options:
+              - id_option: 37
+                id_quiz: 13
+                kunci: A
+                option: bahasa pemrograman yang bisa memanipulasi tampilan dengan real time
+                created_at: 2023-09-14T08:01:05.000000Z
+                updated_at: 2023-09-14T08:01:05.000000Z
+              - id_option: 38
+                id_quiz: 13
+                kunci: B
+                option: bahasa pemrograman yang bisa memperlihatkan yang bagus
+                created_at: 2023-09-14T08:01:05.000000Z
+                updated_at: 2023-09-14T08:01:05.000000Z
+              - id_option: 39
+                id_quiz: 13
+                kunci: C
+                option: bahasa pemrograman yang bisa membuat aplikasi desktop
+                created_at: 2023-09-14T08:01:05.000000Z
+                updated_at: 2023-09-14T08:01:05.000000Z
+      poin: 2
+      nilai: 0
+      status: jalan
+      progress: 0
+    type: object
+    properties:
+      id_enrollment:
+        type: integer
+        format: int32
+      kelas:
+        $ref: "#/definitions/KelasEnrollment"
+      poin:
+        type: integer
+        format: int32
+      nilai:
+        type: integer
+        format: int32
+      status:
+        type: string
+      progress:
+        type: integer
+        format: int32
+    required:
+      - id_enrollment
+      - kelas
+      - poin
+      - nilai
+      - status
+      - progress
+  KelasEnrollment:
+    title: Kelas enrollment
+    example:
+      id_kelas: 1
+      name: Javascript
+      description: JavaScript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+      image: null
+      id_level: 1
+      created_at: 2023-09-14T04:15:47.000000Z
+      updated_at: 2023-09-14T04:15:47.000000Z
+      progress: 0%
+      materi:
+        - id_materi: 1
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : INTRO"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+          durasi: 5000
+          poin: 20
+          created_at: 2023-09-14T04:15:51.000000Z
+          updated_at: 2023-09-14T04:15:51.000000Z
+          id_materi_history: 1
+          status: jalan
+          playback: 60
+        - id_materi: 2
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Variable"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+          durasi: 6000
+          poin: 30
+          created_at: 2023-09-14T04:15:51.000000Z
+          updated_at: 2023-09-14T04:15:51.000000Z
+          id_materi_history: 2
+          status: belum
+          playback: 0
+        - id_materi: 3
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+          durasi: 7000
+          poin: 40
+          created_at: 2023-09-14T04:15:51.000000Z
+          updated_at: 2023-09-14T04:15:51.000000Z
+          id_materi_history: 3
+          status: belum
+          playback: 0
+      quiz:
+        - id_quiz: 1
+          id_kelas: 1
+          question: Pengertian dari Javascript
+          true_answer: A
+          created_at: 2023-09-14T04:15:56.000000Z
+          updated_at: 2023-09-14T07:23:52.000000Z
+          id_quiz_history: 1
+          status: belum
+          answer: null
+          options:
+            - id_option: 1
+              id_quiz: 1
+              kunci: A
+              option: ini adalah a
+              created_at: 2023-09-14T04:15:58.000000Z
+              updated_at: 2023-09-14T08:08:52.000000Z
+            - id_option: 2
+              id_quiz: 1
+              kunci: B
+              option: ini adalah b
+              created_at: 2023-09-14T04:15:58.000000Z
+              updated_at: 2023-09-14T08:08:52.000000Z
+            - id_option: 3
+              id_quiz: 1
+              kunci: C
+              option: ini adalah c
+              created_at: 2023-09-14T04:15:58.000000Z
+              updated_at: 2023-09-14T08:08:52.000000Z
+        - id_quiz: 2
+          id_kelas: 1
+          question: Javascript dibuat oleh?
+          true_answer: B
+          created_at: 2023-09-14T04:15:56.000000Z
+          updated_at: 2023-09-14T04:15:56.000000Z
+          id_quiz_history: 2
+          status: belum
+          answer: null
+          options:
+            - id_option: 4
+              id_quiz: 2
+              kunci: A
+              option: Brendan Eich
+              created_at: 2023-09-14T04:15:58.000000Z
+              updated_at: 2023-09-14T04:15:58.000000Z
+            - id_option: 5
+              id_quiz: 2
+              kunci: B
+              option: Guido van Rossum
+              created_at: 2023-09-14T04:15:58.000000Z
+              updated_at: 2023-09-14T04:15:58.000000Z
+            - id_option: 6
+              id_quiz: 2
+              kunci: C
+              option: Rasmus Lerdorf
+              created_at: 2023-09-14T04:15:58.000000Z
+              updated_at: 2023-09-14T04:15:58.000000Z
+        - id_quiz: 13
+          id_kelas: 1
+          question: javascript digunakan untuk?
+          true_answer: A
+          created_at: 2023-09-14T08:01:05.000000Z
+          updated_at: 2023-09-14T08:01:05.000000Z
+          id_quiz_history: 3
+          status: belum
+          answer: null
+          options:
+            - id_option: 37
+              id_quiz: 13
+              kunci: A
+              option: bahasa pemrograman yang bisa memanipulasi tampilan dengan real time
+              created_at: 2023-09-14T08:01:05.000000Z
+              updated_at: 2023-09-14T08:01:05.000000Z
+            - id_option: 38
+              id_quiz: 13
+              kunci: B
+              option: bahasa pemrograman yang bisa memperlihatkan yang bagus
+              created_at: 2023-09-14T08:01:05.000000Z
+              updated_at: 2023-09-14T08:01:05.000000Z
+            - id_option: 39
+              id_quiz: 13
+              kunci: C
+              option: bahasa pemrograman yang bisa membuat aplikasi desktop
+              created_at: 2023-09-14T08:01:05.000000Z
+              updated_at: 2023-09-14T08:01:05.000000Z
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      progress:
+        type: string
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/MateriEnrollment"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/QuizEnrollment"
+    required:
+      - id_kelas
+      - name
+      - description
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - progress
+      - materi
+      - quiz
+  MateriEnrollment:
+    title: Materi enrollment
+    example:
+      id_materi: 1
+      id_kelas: 1
+      name: "Dasar Pemrograman dengan Javascript : INTRO"
+      materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+      url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+      durasi: 5000
+      poin: 20
+      created_at: 2023-09-14T04:15:51.000000Z
+      updated_at: 2023-09-14T04:15:51.000000Z
+      id_materi_history: 1
+      status: jalan
+      playback: 60
+    type: object
+    properties:
+      id_materi:
+        type: integer
+        format: int32
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      materi:
+        type: string
+      url:
+        type: string
+      durasi:
+        type: integer
+        format: int32
+      poin:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      id_materi_history:
+        type: integer
+        format: int32
+      status:
+        type: string
+      playback:
+        type: integer
+        format: int32
+    required:
+      - id_materi
+      - id_kelas
+      - name
+      - materi
+      - url
+      - durasi
+      - poin
+      - created_at
+      - updated_at
+      - id_materi_history
+      - status
+      - playback
+  QuizEnrollment:
+    title: Quiz enrollment
+    example:
+      id_quiz: 1
+      id_kelas: 1
+      question: Pengertian dari Javascript
+      true_answer: A
+      created_at: 2023-09-14T04:15:56.000000Z
+      updated_at: 2023-09-14T07:23:52.000000Z
+      id_quiz_history: 1
+      status: belum
+      answer: null
+      options:
+        - id_option: 1
+          id_quiz: 1
+          kunci: A
+          option: ini adalah a
+          created_at: 2023-09-14T04:15:58.000000Z
+          updated_at: 2023-09-14T08:08:52.000000Z
+        - id_option: 2
+          id_quiz: 1
+          kunci: B
+          option: ini adalah b
+          created_at: 2023-09-14T04:15:58.000000Z
+          updated_at: 2023-09-14T08:08:52.000000Z
+        - id_option: 3
+          id_quiz: 1
+          kunci: C
+          option: ini adalah c
+          created_at: 2023-09-14T04:15:58.000000Z
+          updated_at: 2023-09-14T08:08:52.000000Z
+    type: object
+    properties:
+      id_quiz:
+        type: integer
+        format: int32
+      id_kelas:
+        type: integer
+        format: int32
+      question:
+        type: string
+      true_answer:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      id_quiz_history:
+        type: integer
+        format: int32
+      status:
+        type: string
+      answer:
+        type: string
+      options:
+        type: array
+        items:
+          $ref: "#/definitions/Option"
+    required:
+      - id_quiz
+      - id_kelas
+      - question
+      - true_answer
+      - created_at
+      - updated_at
+      - id_quiz_history
+      - status
+      - answer
+      - options
+  updateenrollmentmateri(id_materi_history)request:
+    title: Update enrollment materi (id_materi_history) request
+    example:
+      playback: 3000
+      status: selesai
+    type: object
+    properties:
+      playback:
+        type: number
+        format: double
+      status:
+        type: string
+    required:
+      - playback
+      - status
+  updateenrollmentmateri(id_materi_history):
+    title: Update enrollment materi (id_materi_history)
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: History Berhasil Diperbarui
+      data: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        type: boolean
+    required:
+      - metadata
+      - data
+  updateenrollmentquiz(id_quiz_history)request:
+    title: Update enrollment quiz (id_quiz_history) request
+    example:
+      id_option: 1
+      status: selesai
+    type: object
+    properties:
+      id_option:
+        type: integer
+        format: int32
+      status:
+        type: string
+    required:
+      - id_option
+      - status
+  updateenrollmentquiz(id_quiz_history):
+    title: Update enrollment quiz (id_quiz_history)
+    example:
+      metadata:
+        code: 201
+        status: success
+        message: History Berhasil Diperbarui
+      data:
+        answer: true
+        option_true:
+          id_option: 1
+          id_quiz: 1
+          kunci: A
+          option: Bahasa pemrograman yang digunakan untuk membuat website
+          created_at: 2023-09-11T02:50:35.000000Z
+          updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataUpdateEnrollmentQuiz"
+    required:
+      - metadata
+      - data
+  DataUpdateEnrollmentQuiz:
+    title: Data Update Enrollment Quiz
+    example:
+      answer: true
+      option_true:
+        id_option: 1
+        id_quiz: 1
+        kunci: A
+        option: Bahasa pemrograman yang digunakan untuk membuat website
+        created_at: 2023-09-11T02:50:35.000000Z
+        updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      answer:
+        type: boolean
+      option_true:
+        $ref: "#/definitions/OptionTrue"
+    required:
+      - answer
+      - option_true
+  OptionTrue:
+    title: Option true
+    example:
+      id_option: 1
+      id_quiz: 1
+      kunci: A
+      option: Bahasa pemrograman yang digunakan untuk membuat website
+      created_at: 2023-09-11T02:50:35.000000Z
+      updated_at: 2023-09-11T02:50:35.000000Z
+    type: object
+    properties:
+      id_option:
+        type: integer
+        format: int32
+      id_quiz:
+        type: integer
+        format: int32
+      kunci:
+        type: string
+      option:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+    required:
+      - id_option
+      - id_quiz
+      - kunci
+      - option
+      - created_at
+      - updated_at
+  getrekap:
+    title: Get rekap
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Berhasil mengambil data
+      data:
+        id_enrollment: 2
+        jawaban:
+          - id_option: 26
+            id_quiz: 9
+            kunci: B
+            option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+            created_at: 2023-09-14T04:15:58.000000Z
+            updated_at: 2023-09-14T04:15:58.000000Z
+          - id_option: 30
+            id_quiz: 10
+            kunci: C
+            option: Rasmus Lerdorf
+            created_at: 2023-09-14T04:15:58.000000Z
+            updated_at: 2023-09-14T04:15:58.000000Z
+        nilai: 0
+        ulang: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataGetRekap"
+    required:
+      - metadata
+      - data
+  DataGetRekap:
+    title: Data get rekap
+    example:
+      id_enrollment: 2
+      jawaban:
+        - id_option: 26
+          id_quiz: 9
+          kunci: B
+          option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+          created_at: 2023-09-14T04:15:58.000000Z
+          updated_at: 2023-09-14T04:15:58.000000Z
+        - id_option: 30
+          id_quiz: 10
+          kunci: C
+          option: Rasmus Lerdorf
+          created_at: 2023-09-14T04:15:58.000000Z
+          updated_at: 2023-09-14T04:15:58.000000Z
+      nilai: 0
+      ulang: true
+    type: object
+    properties:
+      id_enrollment:
+        type: integer
+        format: int32
+      jawaban:
+        type: array
+        items:
+          $ref: "#/definitions/Jawaban"
+      nilai:
+        type: integer
+        format: int32
+      ulang:
+        type: boolean
+    required:
+      - id_enrollment
+      - jawaban
+      - nilai
+      - ulang
+  Jawaban:
+    title: Jawaban
+    example:
+      id_option: 26
+      id_quiz: 9
+      kunci: B
+      option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+      created_at: 2023-09-14T04:15:58.000000Z
+      updated_at: 2023-09-14T04:15:58.000000Z
+    type: object
+    properties:
+      id_option:
+        type: integer
+        format: int32
+      id_quiz:
+        type: integer
+        format: int32
+      kunci:
+        type: string
+      option:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+    required:
+      - id_option
+      - id_quiz
+      - kunci
+      - option
+      - created_at
+      - updated_at
+  getrapor:
+    title: Get rapor
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataGetRapor"
+    required:
+      - metadata
+      - data
+  DataGetRapor:
+    title: Data get rapor
+    type: object
+    properties:
+      kelas_progress:
+        type: array
+        items:
+          $ref: "#/definitions/KelasProgress"
+      kelas_selesai:
+        type: array
+        items:
+          $ref: "#/definitions/KelasSelesai"
+      jumlah_selesai:
+        type: integer
+        format: int32
+      rata_progress:
+        type: string
+      total_poin:
+        type: integer
+        format: int32
+      nilai:
+        type: integer
+        format: int32
+    required:
+      - kelas_progress
+      - kelas_selesai
+      - jumlah_selesai
+      - rata_progress
+      - total_poin
+      - nilai
+  KelasProgress:
+    title: Kelas progress
+    example:
+      id_kelas: 4
+      name: HTML
+      description: Hypertext Markup Language adalah bahasa markah standar untuk dokumen yang dirancang untuk ditampilkan di peramban internet. Ini dapat dibantu oleh teknologi seperti Cascading Style Sheets dan bahasa skrip lainnya seperti JavaScript, VBScript, dan PHP.
+      image: images/kelas/2vmgm18wrjOAmcswljYxJbO6QAQrFKyEWb4sjEtp.png
+      id_level: 1
+      created_at: 2023-09-09T04:40:06.000000Z
+      updated_at: 2023-09-10T09:40:34.000000Z
+      max_poin: 70
+      progress: 0%
+      materi:
+        - id_materi: 4
+          id_kelas: 4
+          name: "Dasar Pemrograman dengan PHP : INTRO"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=l1W2OwV5rgY&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&ab_channel=WebProgrammingUNPAS
+          durasi: 5500
+          poin: 30
+          created_at: 2023-09-09T04:40:13.000000Z
+          updated_at: 2023-09-12T16:10:30.000000Z
+          status: belum
+          playback: 0
+        - id_materi: 10
+          id_kelas: 4
+          name: Tag HTML
+          materi: Tag HTML adalah alat yang membentuk kata-kata dan kalimat, membantu kita mengkomunikasikan pesan visual ke pengunjung situs.
+          url: https://www.youtube.com/embed/cUWBYzA6M-8?si=dOGJ0tYf7lWJ5P1v
+          durasi: 32400
+          poin: 40
+          created_at: 2023-09-11T08:57:48.000000Z
+          updated_at: 2023-09-12T16:28:00.000000Z
+          status: belum
+          playback: 0
+      quiz: []
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      max_poin:
+        type: integer
+        format: int32
+      progress:
+        type: string
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/MateriRapor"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/QuizRapor"
+    required:
+      - id_kelas
+      - name
+      - description
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - max_poin
+      - progress
+      - materi
+      - quiz
+  KelasSelesai:
+    title: Kelas selesai
+    example:
+      id_kelas: 1
+      name: Javascript
+      description: Javascript adalah bahasa pemrograman tingkat tinggi yang pada awalnya dikembangkan untuk membuat website menjadi lebih “hidup”.
+      image: images/kelas/NDyeKEjeDr14FRhcYuwlFeJ3gdWTE5pSG95SOe0z.png
+      id_level: 1
+      created_at: 2023-09-09T04:40:06.000000Z
+      updated_at: 2023-09-10T09:39:55.000000Z
+      max_poin: 180
+      progress: 0%
+      materi:
+        - id_materi: 1
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : INTRO"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=RUTV_5m4VeI&ab_channel=WebProgrammingUNPAS
+          durasi: 5000
+          poin: 20
+          created_at: 2023-09-09T04:40:13.000000Z
+          updated_at: 2023-09-09T04:40:13.000000Z
+          status: belum
+          playback: 0
+        - id_materi: 2
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Variable"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=Ncrlg9kTC6U&ab_channel=WebProgrammingUNPAS
+          durasi: 6000
+          poin: 30
+          created_at: 2023-09-09T04:40:13.000000Z
+          updated_at: 2023-09-09T04:40:13.000000Z
+          status: belum
+          playback: 0
+        - id_materi: 3
+          id_kelas: 1
+          name: "Dasar Pemrograman dengan Javascript : Tipe Data"
+          materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+          url: https://www.youtube.com/watch?v=dugL0oYx0w0&ab_channel=WebProgrammingUNPAS
+          durasi: 7000
+          poin: 40
+          created_at: 2023-09-09T04:40:13.000000Z
+          updated_at: 2023-09-09T04:40:13.000000Z
+          status: belum
+          playback: 0
+      quiz:
+        - id_quiz: 1
+          id_kelas: 1
+          question: Apa pengertian dari Javascript?
+          true_answer: A
+          created_at: 2023-09-09T04:40:19.000000Z
+          updated_at: 2023-09-09T04:40:19.000000Z
+          status: belum
+          answer: null
+          options:
+            - id_option: 1
+              id_quiz: 1
+              kunci: A
+              option: Bahasa pemrograman yang digunakan untuk membuat website
+              created_at: 2023-09-09T04:40:24.000000Z
+              updated_at: 2023-09-09T04:40:24.000000Z
+            - id_option: 2
+              id_quiz: 1
+              kunci: B
+              option: Bahasa pemrograman yang digunakan untuk membuat aplikasi mobile
+              created_at: 2023-09-09T04:40:24.000000Z
+              updated_at: 2023-09-09T04:40:24.000000Z
+            - id_option: 3
+              id_quiz: 1
+              kunci: C
+              option: Bahasa pemrograman yang digunakan untuk membuat aplikasi desktop
+              created_at: 2023-09-09T04:40:24.000000Z
+              updated_at: 2023-09-09T04:40:24.000000Z
+        - id_quiz: 2
+          id_kelas: 1
+          question: Javascript dibuat oleh?
+          true_answer: B
+          created_at: 2023-09-09T04:40:19.000000Z
+          updated_at: 2023-09-09T04:40:19.000000Z
+          status: belum
+          answer: null
+          options:
+            - id_option: 4
+              id_quiz: 2
+              kunci: A
+              option: Brendan Eich
+              created_at: 2023-09-09T04:40:24.000000Z
+              updated_at: 2023-09-09T04:40:24.000000Z
+            - id_option: 5
+              id_quiz: 2
+              kunci: B
+              option: Rasmus Lerdorf
+              created_at: 2023-09-09T04:40:24.000000Z
+              updated_at: 2023-09-09T04:40:24.000000Z
+            - id_option: 6
+              id_quiz: 2
+              kunci: C
+              option: Guido van Rossum
+              created_at: 2023-09-09T04:40:24.000000Z
+              updated_at: 2023-09-09T04:40:24.000000Z
+    type: object
+    properties:
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      id_level:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      max_poin:
+        type: integer
+        format: int32
+      progress:
+        type: string
+      materi:
+        type: array
+        items:
+          $ref: "#/definitions/MateriRapor"
+      quiz:
+        type: array
+        items:
+          $ref: "#/definitions/QuizRapor"
+    required:
+      - id_kelas
+      - name
+      - description
+      - image
+      - id_level
+      - created_at
+      - updated_at
+      - max_poin
+      - progress
+      - materi
+      - quiz
+  MateriRapor:
+    title: MateriRapor
+    example:
+      id_materi: 4
+      id_kelas: 4
+      name: "Dasar Pemrograman dengan PHP : INTRO"
+      materi: Di seri ini kita akan mempelajari mengenai konsep dasar pemrograman, istilah2 yang ada dalam dunia pemrograman, cara menulis dan mengeksekusi program, dll.
+      url: https://www.youtube.com/watch?v=l1W2OwV5rgY&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6&ab_channel=WebProgrammingUNPAS
+      durasi: 5500
+      poin: 30
+      created_at: 2023-09-09T04:40:13.000000Z
+      updated_at: 2023-09-12T16:10:30.000000Z
+      status: belum
+      playback: 0
+    type: object
+    properties:
+      id_materi:
+        type: integer
+        format: int32
+      id_kelas:
+        type: integer
+        format: int32
+      name:
+        type: string
+      materi:
+        type: string
+      url:
+        type: string
+      durasi:
+        type: integer
+        format: int32
+      poin:
+        type: integer
+        format: int32
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      status:
+        type: string
+      playback:
+        type: integer
+        format: int32
+    required:
+      - id_materi
+      - id_kelas
+      - name
+      - materi
+      - url
+      - durasi
+      - poin
+      - created_at
+      - updated_at
+      - status
+      - playback
+  QuizRapor:
+    title: Quiz rapor
+    type: object
+    properties:
+      id_quiz:
+        type: integer
+        format: int32
+      id_kelas:
+        type: integer
+        format: int32
+      question:
+        type: string
+      true_answer:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      status:
+        type: string
+      answer:
+        type: string
+      options:
+        type: array
+        items:
+          $ref: "#/definitions/Option"
+  getleaderboard:
+    title: Get leaderboard
+    example:
+      metadata:
+        code: 200
+        status: success
+        message: Berhasil menampilkan data
+      data:
+        ranking:
+          - count: 2
+            poin: 145
+            user:
+              id_user: 2
+              name: User Voicesee
+              email: user@nurz.site
+              image: null
+              email_verified_at: 2023-09-13T13:46:54.000000Z
+              created_at: 2023-09-13T13:46:54.000000Z
+              updated_at: 2023-09-13T13:46:54.000000Z
+            ranking: 1
+            active: true
+        user:
+          count: 2
+          poin: 145
+          user:
+            id_user: 2
+            name: User Voicesee
+            email: user@nurz.site
+            image: null
+            email_verified_at: 2023-09-13T13:46:54.000000Z
+            created_at: 2023-09-13T13:46:54.000000Z
+            updated_at: 2023-09-13T13:46:54.000000Z
+          ranking: 1
+          active: true
+    type: object
+    properties:
+      metadata:
+        $ref: "#/definitions/Metadata"
+      data:
+        $ref: "#/definitions/DataGetLeaderboard"
+    required:
+      - metadata
+      - data
+  DataGetLeaderboard:
+    title: Data get leaderboard
+    example:
+      ranking:
+        - count: 2
+          poin: 145
+          user:
+            id_user: 2
+            name: User Voicesee
+            email: user@nurz.site
+            image: null
+            email_verified_at: 2023-09-13T13:46:54.000000Z
+            created_at: 2023-09-13T13:46:54.000000Z
+            updated_at: 2023-09-13T13:46:54.000000Z
+          ranking: 1
+          active: true
+      user:
+        count: 2
+        poin: 145
+        user:
+          id_user: 2
+          name: User Voicesee
+          email: user@nurz.site
+          image: null
+          email_verified_at: 2023-09-13T13:46:54.000000Z
+          created_at: 2023-09-13T13:46:54.000000Z
+          updated_at: 2023-09-13T13:46:54.000000Z
+        ranking: 1
+        active: true
+    type: object
+    properties:
+      ranking:
+        type: array
+        items:
+          $ref: "#/definitions/Ranking"
+      user:
+        $ref: "#/definitions/UserRanking"
+    required:
+      - ranking
+      - user
+  Ranking:
+    title: Ranking
+    example:
+      count: 2
+      poin: 145
+      user:
+        id_user: 2
+        name: User Voicesee
+        email: user@nurz.site
+        image: null
+        email_verified_at: 2023-09-13T13:46:54.000000Z
+        created_at: 2023-09-13T13:46:54.000000Z
+        updated_at: 2023-09-13T13:46:54.000000Z
+      ranking: 1
+      active: true
+    type: object
+    properties:
+      count:
+        type: integer
+        format: int32
+      poin:
+        type: integer
+        format: int32
+      user:
+        $ref: "#/definitions/User"
+      ranking:
+        type: integer
+        format: int32
+      active:
+        type: boolean
+    required:
+      - count
+      - poin
+      - user
+      - ranking
+      - active
+  UserRanking:
+    title: User ranking
+    example:
+      count: 2
+      poin: 145
+      user:
+        id_user: 2
+        name: User Voicesee
+        email: user@nurz.site
+        image: null
+        email_verified_at: 2023-09-13T13:46:54.000000Z
+        created_at: 2023-09-13T13:46:54.000000Z
+        updated_at: 2023-09-13T13:46:54.000000Z
+      ranking: 1
+      active: true
+    type: object
+    properties:
+      count:
+        type: integer
+        format: int32
+      poin:
+        type: integer
+        format: int32
+      user:
+        $ref: "#/definitions/User"
+      ranking:
+        type: integer
+        format: int32
+      active:
+        type: boolean
+    required:
+      - count
+      - poin
+      - user
+      - ranking
+      - active
+  User:
+    title: User
+    example:
+      id_user: 2
+      name: User Voicesee
+      email: user@nurz.site
+      image: null
+      email_verified_at: 2023-09-13T13:46:54.000000Z
+      created_at: 2023-09-13T13:46:54.000000Z
+      updated_at: 2023-09-13T13:46:54.000000Z
+    type: object
+    properties:
+      id_user:
+        type: integer
+        format: int32
+      name:
+        type: string
+      email:
+        type: string
+      image:
+        type: string
+      email_verified_at:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+    required:
+      - id_user
+      - name
+      - email
+      - image
+      - email_verified_at
+      - created_at
+      - updated_at
+security: []
+tags:
+  - name: Auth
+  - name: Users
+  - name: Kelas
+  - name: Enrollment
+  - name: Rapor
+  - name: Leaderboard
+  - name: Get image
