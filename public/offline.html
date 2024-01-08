@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Offline Access</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+        <style>
+            body {
+                background: linear-gradient(to bottom, #a2c579, #ffffdd);
+
+                /* margin: 0; */
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                font-family: 'Avenir', sans-serif;
+                margin: auto;
+                /* width: 640px; */
+                /* padding: 50px; */
+            }
+
+            img {
+                padding: 10px;
+            }
+
+            #offline-container {
+                text-align: center;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            #offline-icon {
+                height: 300px;
+                justify-content: center;
+                margin: auto;
+                fill: #ffffff; /* Merah */
+            }
+
+            #notification {
+                font-size: 20px;
+                color: #000000;
+                margin-top: 20px;
+            }
+
+            #refresh-button {
+                padding: 10px 20px;
+                background-color: #007bff; /* Biru */
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+
+            #notification-sound {
+                display: none;
+            }
+
+            #notification-sound-button {
+                background-color: #007bff; /* Biru */
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="offline-container">
+            <div style="text-align: center">
+                <img src="no-internet.png" alt="" style="width: 100%" />
+            </div>
+
+            <p id="notification">
+                Anda sedang <b><i>offline</i></b
+                >. Silakan Cek Koneksi Internet Anda
+            </p>
+            <!-- <audio id="notification-sound" src="sound.wav" preload="auto" autoplay></audio> -->
+            <button id="refresh-button">Refresh</button>
+            <!--             <button id="notification-sound-button">Putar Suara</button> -->
+        </div>
+        <script type="text/javascript">
+            window.onload = someFunc();
+
+            function someFunc() {
+                speakText(
+                    'Anda sedang offline. Jika Anda ingin menggunakan aplikasi ini, Anda diharuskan untuk memeriksa koneksi internet agar tetap terhubung.',
+                );
+                // speakText('Anda sedang offline. ini dari window load');
+            }
+            const refreshButton = document.getElementById('refresh-button');
+            if (refreshButton) {
+                refreshButton.addEventListener('click', function () {
+                    console.log('refresh diklik');
+                    location.reload();
+                });
+            }
+            // window.addEventListener('load', function () {
+            //     // Fungsi ini akan dipanggil saat halaman selesai dimuat
+            // });
+
+            function speakText(text) {
+                const synth = window.speechSynthesis;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'id-ID';
+                synth.speak(utterance);
+            }
+        </script>
+    </body>
+</html>
