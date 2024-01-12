@@ -4,7 +4,7 @@ Halaman Admin G-MOOC4D
 
 G-MOOC team members:
 
-Iman Nurjaman - Hacker
-Taofik Arianto - Hacker
-Rizki Setiabudi - Hustler
-Muhammad Dani Mu'ti - Hipster
+1. Iman Nurjaman - Hacker
+2. Taofik Arianto - Hacker
+3. Rizki Setiabudi - Hustler
+4. Muhammad Dani Mu'ti - Hipster
