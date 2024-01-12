@@ -1,9 +1,10 @@
 Face Recognition On Login
 
-<p align="center"><img src="https://github.com/nurzaman-now/G-MOOC-4D/blob/face-recognition/screenshoot/face-recognition.png" width="600" alt="Face Recognition Image"></P>
+![face-recognition](https://github.com/nurzaman-now/G-MOOC-4D/assets/68520415/11349823-a0c8-40fd-8abc-0f0ff607128f)
 
-Deskription Tim Hacker:
-G-MOOC
+G-MOOC team members:
 
-1. Iman Nurjaman
-2. Taofik Arianto
+1. Iman Nurjaman - Hacker
+2. Taofik Arianto - Hacker
+3. Rizki Setiabudi - Hustler
+4. Muhammad Dani Mu'ti - Hipster
