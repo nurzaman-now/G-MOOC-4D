@@ -1,8 +1,8 @@
 Endpoint Class
 
-<p align="center"><img src="https://github.com/nurzaman-now/G-MOOC-4D/blob/Backend/screenshoot/success.png" width="400" alt="Endpoint Class GET"></P>
+file:///home/nurz/Documents/project/GMOOC_4D/Hackfest/G-MOOC-4D/screenshoot/success.png
 
-<p align="center">The image above produces successful output showing the user's progress in learning in a class.</p>
+The image above produces successful output showing the user's progress in learning in a class.
 
 Deskription Tim Hacker:
 G-MOOC
