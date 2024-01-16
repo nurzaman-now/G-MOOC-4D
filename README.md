@@ -12,3 +12,11 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://
 2. Pindah ke direktori proyek:
    ```bash
    cd G-MOOC-4D
+3. Instal dependensi:
+   ```bash
+   npm install
+4. Jalankan Proyek:
+   ```bash
+   npm run dev
+
+   Open your browser and access http://localhost:3000 to view the project.
