@@ -9,4 +9,6 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://
 1. Clone repositori ini:
    ```bash
    git clone https://github.com/nurzaman-now/G-MOOC-4D
-Pindah ke direktori proyek:
+2. Pindah ke direktori proyek:
+   ```bash
+   cd G-MOOC-4D
