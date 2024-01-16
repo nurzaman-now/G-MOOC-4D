@@ -20,3 +20,13 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://
    npm run dev
 
    Open your browser and access http://localhost:3000 to view the project.
+
+## User G-MOOC-4D Pages
+![Screenshot 2024-01-12 011638](https://github.com/nurzaman-now/G-MOOC-4D/assets/75087977/51cd55cd-8f69-4b32-ab16-0145ca732089)
+
+## G-MOOC team members:
+ ```bash
+   Iman Nurjaman - Hacker
+   Taofik Arianto - Hacker
+   Rizki Setiabudi - Hustler
+   Muhammad Dani Mu'ti - Hipster
