@@ -11,7 +11,7 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://
    git clone https://github.com/nurzaman-now/G-MOOC-4D
 Pindah ke direktori proyek:
 
-```bash
+   ```bash
 cd G-MOOC-4D
 Instal dependensi:
 
