@@ -11,28 +11,25 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://
    git clone https://github.com/nurzaman-now/G-MOOC-4D
 Pindah ke direktori proyek:
 
-bash
-Copy code
+```bash
 cd G-MOOC-4D
 Instal dependensi:
 
-bash
-Copy code
+```bash
 npm install
-Menjalankan Proyek
+
+2. Menjalankan Proyek
 Mode Pengembangan
 Untuk menjalankan proyek dalam mode pengembangan, gunakan perintah berikut:
 
-bash
-Copy code
+```bash
 npm run dev
-Buka browser dan akses http://localhost:3000 untuk melihat proyek Anda.
+Buka browser dan akses http://localhost:3000 untuk melihat proyek.
 
 Build dan Menjalankan Proyek (Mode Produksi)
-Jika Anda ingin membuat versi produksi dan menjalankan proyek, gunakan perintah berikut:
+Jika  ingin membuat versi produksi dan menjalankan proyek, gunakan perintah berikut:
 
-bash
-Copy code
+```bash
 npm run build
 npm start
 
