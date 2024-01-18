@@ -28,8 +28,8 @@ Make sure you have installed [Node.js](https://nodejs.org/) and [npm](https://ww
    ```
    Open your browser and access http://localhost:3000 to view the project.
 
-## User G-MOOC-4D Pages
-![Screenshot 2024-01-12 011638](https://github.com/nurzaman-now/G-MOOC-4D/assets/75087977/51cd55cd-8f69-4b32-ab16-0145ca732089)
+## Admin G-MOOC-4D Pages
+![Screenshot 2024-01-12 012515](https://github.com/nurzaman-now/G-MOOC-4D/assets/75087977/7e706c8a-2b06-400b-afbd-c5c6e6e434b5)
 
 ## G-MOOC team members:
  
