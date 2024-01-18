@@ -1,32 +1,35 @@
 # Frontend User G-MOOC-4D
 
-G-MOOC 4D (Gamified Massive Open Online Course) merupakan sebuah aplikasi pembelajaran  yang mempunyai fitur gamifikasi, speech recognition, face recognition untuk memudahkan pembelajaran disabilitas tunanetra
+G-MOOC 4D (Gamified Massive Open Online Course) is a learning application that has gamification, speech recognition, face recognition features to facilitate learning for visually impaired people.
 
 ## Instalasi
 
-Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://www.npmjs.com/) di komputer Anda sebelum melanjutkan.
+Make sure you have installed [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) on your computer before continuing.
 
-1. Clone repositori ini:
+1. Clone repositori:
    ```bash
    git clone https://github.com/nurzaman-now/G-MOOC-4D
-2. Pindah ke direktori proyek:
+   ```
+2. Move to the project directory:
    ```bash
    cd G-MOOC-4D
-3. Instal dependensi:
+   ```
+3. Install dependencies:
    ```bash
    npm install
-4. Jalankan Proyek:
+   ```
+4. Run Project:
    ```bash
    npm run dev
-
+   ```
    Open your browser and access http://localhost:3000 to view the project.
 
 ## User G-MOOC-4D Pages
 ![Screenshot 2024-01-12 011638](https://github.com/nurzaman-now/G-MOOC-4D/assets/75087977/51cd55cd-8f69-4b32-ab16-0145ca732089)
 
 ## G-MOOC team members:
- ```bash
-   Iman Nurjaman - Hacker
-   Taofik Arianto - Hacker
-   Rizki Setiabudi - Hustler
-   Muhammad Dani Mu'ti - Hipster
+ 
+1. Iman Nurjaman - Hacker
+2. Taofik Arianto - Hacker
+3. Rizki Setiabudi - Hustler
+4. Muhammad Dani Mu'ti - Hipster
