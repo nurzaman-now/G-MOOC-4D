@@ -4,7 +4,7 @@ G-MOOC 4D (Gamified Massive Open Online Course) merupakan sebuah aplikasi pembel
 
 ## Instalasi
 
-Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan [npm](https://www.npmjs.com/) di komputer Anda sebelum melanjutkan.
+Pastikan Anda telah menginstal [Composer](https://getcomposer.org/) dan [php](https://php.net) versi 8 ke atas di komputer Anda sebelum melanjutkan.
 
 1. Clone repositori ini:
    ```bash
