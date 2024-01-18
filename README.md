@@ -6,7 +6,7 @@ G-MOOC 4D (Gamified Massive Open Online Course) is a learning application that h
 
 Make sure you have installed [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) on your computer before continuing.
 
-1. Clone repositori:
+1. Clone repository:
    ```bash
    git clone https://github.com/nurzaman-now/G-MOOC-4D
    ```
