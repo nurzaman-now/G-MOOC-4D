@@ -14,22 +14,21 @@ Make sure you have installed [Python](https://php.net) version 3.7 and above on 
    ```bash
    cd G-MOOC-4D
    ```
-3. Move branch:
+3. Unzip fastext_module.zip
+4. Move branch:
    ```bash
    git checkout face-recognition
    ```
-4. Make environment python:
+5. Make environment python:
    ```bash
    python -m venv env
    env\Scripts\activate
    ```
-5. Install dependencies:
-
+6. Install dependencies:
    ```bash
     pip install -r requirements.txt
    ```
-
-6. Run projeck:
+7. Run projeck:
    ```bash
    python main.py
    ```
