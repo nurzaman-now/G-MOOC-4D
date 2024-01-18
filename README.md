@@ -6,23 +6,27 @@ G-MOOC 4D (Gamified Massive Open Online Course) is a learning application that h
 
 Make sure you have installed [Composer](https://getcomposer.org/) and [php](https://php.net) version 8 and above on your computer before proceeding.
 
-1. Clone repositori ini:
+1. Clone repository:
     ```bash
     git clone https://github.com/nurzaman-now/G-MOOC-4D
     ```
-2. Pindah ke direktori proyek:
+2. Move to the project directory:
     ```bash
     cd G-MOOC-4D
     ```
-3. Instal dependensi:
+3. Move branch Backend:
+    ```bash
+    git checkout Backend
+    ```
+4. Install dependencies:
     ```bash
     composer install
     ```
-4. Setup env:
+5. Setup env:
     ```bash
     cp .env.example .env
     ```
-5. Jalankan Proyek:
+6. Run projeck:
     ```bash
     php artisan migrate
     php artisan db:seed
